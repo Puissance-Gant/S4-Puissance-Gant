@@ -14,7 +14,7 @@ controlServo.h
 •	The class Servo contains the struct Servo and all the function used in for the control of the motors.
 •	The struct Servo contains all the configurations of the 5 fingers, the wrist and the base for all the characters (letters and numbers).
 •	The three functions called form the main (Test_main.ino) are the setupBase, servoOut and the reverseMove.
-•	The function setupBase is used to move the base and wrist at is initial position depended on is initial position.
+•	The function setupBase is used to move the base and wrist at its initial position depended on is initial position.
 •	The function servoOut is use the move all motors in the configuration of a specific letter or number.
 •	The function reverseMove is use to replace the hand in is initial position.
 
