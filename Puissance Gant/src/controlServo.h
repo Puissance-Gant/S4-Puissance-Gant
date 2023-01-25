@@ -15,7 +15,7 @@
 #include <Arduino.h>
 #include <Adafruit_PWMServoDriver.h>                        ///< Library needed to control the PWM of servo drive.
 #include <Wire.h>
-#include <DynamixelWorkbench.h>
+#include <..\lib\dynamixel-workbench\dynamixel_workbench_toolbox\src\DynamixelWorkbench.h>
 
   // Section to change when adding servos or characters:
 #define NB_MOTORS             10                            ///< Number of active motors.
