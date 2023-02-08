@@ -36,15 +36,14 @@ def serial_ports():
     return result
 
 
-def SendStrToOpenCR(port,msg):
+def SendStrToOpenCR(msg):
     
-    ser = serial.Serial("/dev/ttyACM0", 57600, timeout=1)
-    #ser = serial.Serial(port, 57600, timeout=1)
+    ser = serial.Serial("COM11", 115200, timeout=1)#/dev/ttyACM0
     ser.flush()
     line = ""
 
     ser.write(msg.encode('utf-8'))
-    while line != "IM DONE" :
+    while line != "f" :
         #print(ser)
         line = ser.readline().decode('utf-8').rstrip()
         #print("patate")
