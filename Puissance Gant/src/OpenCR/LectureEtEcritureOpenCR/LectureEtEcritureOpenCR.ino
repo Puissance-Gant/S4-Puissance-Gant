@@ -64,7 +64,7 @@ void recvWithStartEndMarkers() {
 }
 
 //===============
-
+//Changer les serial print afin de mettre le message voulu
 void replyToPython() {
     if (newData == true) {
         Serial.print("<This just in ... ");
