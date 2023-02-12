@@ -1,9 +1,8 @@
 #include <Dynamixel2Arduino.h>
 #include <actuator.h>
+using namespace ControlTableItem;
 
-#if defined(ARDUINO_OpenCR) // When using official ROBOTIS board with DXL circuit.
-  // For OpenCR, there is a DXL Power Enable pin, so you must initialize and control it.
-  // Reference link : https://github.com/ROBOTIS-GIT/OpenCR/blob/master/arduino/opencr_arduino/opencr/libraries/DynamixelSDK/src/dynamixel_sdk/port_handler_arduino.cpp#L78
+#if defined(ARDUINO_OpenCR) 
   #define DXL_SERIAL   Serial3
   #define DEBUG_SERIAL Serial
   const int DXL_DIR_PIN = 84; // OpenCR Board's DIR PIN.
@@ -14,13 +13,23 @@ const float DXL_PROTOCOL_VERSION = 2.0;
 
 Dynamixel2Arduino dxl(DXL_SERIAL, DXL_DIR_PIN);
 
-//This namespace is required to use Control table item names
-using namespace ControlTableItem;
+struct Moteur{
+  int id;           //ID du moteur
+  int posGoalActu;  //but de position actuel
+  int vitActu;     //vitesse actuelle
+};
+
 
 void setup() {
-  // put your setup code here, to run once:
 
-  // Set Port baudrate to 57600bps. This has to match with DYNAMIXEL baudrate.
+  //creation instance Moteur
+  struct Moteur ID_POS_V;
+
+  //creation var asignation
+  int motID   = ID_POS_V.id;
+  int motPOS  = ID_POS_V.posGoalActu;
+  int motV    = ID_POS_V.vitActu;
+
   dxl.begin(57600);
   // Set Port Protocol Version. This has to match with DYNAMIXEL protocol version.
   dxl.setPortProtocolVersion(DXL_PROTOCOL_VERSION);
@@ -38,9 +47,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
-  // Please refer to e-Manual(http://emanual.robotis.com/docs/en/parts/interface/dynamixel_shield/) for available range of value. 
-  // Set Goal Position in RAW value
+
+  //lire port seriel
+
+  //
   dxl.setGoalPosition(DXL_ID, 1000);
 
   int i_present_position = 0;
