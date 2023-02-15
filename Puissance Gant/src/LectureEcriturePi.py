@@ -1,5 +1,6 @@
 import serial
 import time
+import random
 
 startMarker = '<'
 endMarker = '>'
@@ -58,24 +59,28 @@ def recvLikeArduino():
     else:
         return "XXX" 
 
-
-
 #====================
 #====================
     # the program
 
 
-setupSerial(115200, "COM4")
+setupSerial(115200, "COM10")
 count = 0
 prevTime = time.time()
 while True:
-            # check for a reply
+        # check for a reply
     arduinoReply = recvLikeArduino()
     if not (arduinoReply == 'XXX'):
-        print ("Time %s  Reply %s" %(time.time(), arduinoReply))
+        print (arduinoReply)
         
         # send a message at intervals
     if time.time() - prevTime > 1:
-        sendToArduino("this is a test " + str(count))
+        message0 = random.randint(0,1024)
+        message1 = random.randint(0,1024)
+        message2 = random.randint(0,1024)
+        message3 = random.randint(0,1024)
+        message4 = random.randint(0,1024)
+        sendToArduino(str(message0) + "A" + str(message1) + "B" + str(message2) + "C" + str(message3) + "D" + str(message4) + "E")
+
         prevTime = time.time()
         count += 1
