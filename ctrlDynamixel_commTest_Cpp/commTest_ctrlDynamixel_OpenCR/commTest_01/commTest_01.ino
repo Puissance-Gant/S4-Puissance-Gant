@@ -8,7 +8,7 @@ using namespace ControlTableItem;
   const int DXL_DIR_PIN = 84; // OpenCR Board's DIR PIN.
 #endif
 
-const uint8_t DXL_ID = 1;
+//const uint8_t DXL_ID = 1;
 const float DXL_PROTOCOL_VERSION = 2.0;
 
 Dynamixel2Arduino dxl(DXL_SERIAL, DXL_DIR_PIN);
@@ -27,7 +27,7 @@ void setup() {
 
   //creation var asignation
   int motID   = ID_POS_V.id;
-  int motPOS  = ID_POS_V.posGoalActu;
+  int motPOSD  = ID_POS_V.posGoalActu;
   int motV    = ID_POS_V.vitActu;
 
   dxl.begin(57600);
@@ -50,9 +50,10 @@ void loop() {
 
   //lire port seriel
 
-  //
-  dxl.setGoalPosition(DXL_ID, 1000);
+  //fonction d'appel principale
+  mot_ReadWriteGet();
 
+  
   int i_present_position = 0;
   float f_present_position = 0.0;
 
@@ -74,4 +75,16 @@ void loop() {
     DEBUG_SERIAL.println(f_present_position);
   }
   delay(1000);
+}
+
+void Mot_ReadWriteGet(){
+  dxl.setGoalPosition(motID, motPOSD);
+  
+  writeSerialMotPos();
+}
+
+void writeSerialMotPos(){
+  message[1] = "<";
+  message[5] = ">";
+  serial.Print(dxl.getPresentPosition());
 }
