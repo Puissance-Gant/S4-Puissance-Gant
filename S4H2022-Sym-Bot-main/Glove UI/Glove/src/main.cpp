@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SparkFun_ADS1015_Arduino_Library.h>
 #include <MPU9250.h>
-#include <Wire.h>
+#include <Wire.h>  
 #include "BluetoothSerial.h"
 #include "analogWrite.h"
 
@@ -16,7 +16,7 @@ struct Color{
 
 /// Struct that contains all the data from the glove
 struct Hand{
-  static const uint8_t FINGERS = 4; // Max number of fingers with flexs
+  static const uint8_t FINGERS = 3; // Max number of fingers with flexs
   static const uint8_t AXIS = 3; // Number of MPU9250's axis data to send
 
   uint16_t max[FINGERS] = {0, 0, 0, 0}; // Contains the initial values of flexs
@@ -26,7 +26,7 @@ struct Hand{
 } hand = {};
 
 // Const:
-const unsigned MILLISECONDS = 10; // DELAY
+const unsigned MILLISECONDS = 10; // DELAY  
 const uint8_t MODE_MAX = 3; // Max number of modes
 const Color RED     = {255,  0,  0}; // FATAL ERROR
 const Color ORANGE  = {255,155,  0}; // JOG MODE
