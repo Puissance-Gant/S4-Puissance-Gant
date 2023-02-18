@@ -53,7 +53,7 @@ def recvLikeArduino():
             dataBuf = ''
             dataStarted = True
     
-    if (messageComplete == True):
+    if (messageComplete):
         messageComplete = False
         return dataBuf
     else:
@@ -74,12 +74,12 @@ while True:
         print (arduinoReply)
         
         # send a message at intervals
-    if time.time() - prevTime > 1:
-        message0 = random.randint(0,1024)
-        message1 = random.randint(0,1024)
-        message2 = random.randint(0,1024)
-        message3 = random.randint(0,1024)
-        message4 = random.randint(0,1024)
+    if time.time() - prevTime > 3:
+        message0 = random.randint(0,359)
+        message1 = random.randint(0,359)
+        message2 = random.randint(0,359)
+        message3 = random.randint(0,359)
+        message4 = random.randint(0,359)
         sendToArduino(str(message0) + "A" + str(message1) + "B" + str(message2) + "C" + str(message3) + "D" + str(message4) + "E")
 
         prevTime = time.time()
