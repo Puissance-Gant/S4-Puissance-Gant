@@ -12,36 +12,43 @@ messageComplete = False
 #========================
     # the functions
 
-def setupSerial(baudRate, serialPortName):
+def setupSerialOpenCR(baudRate, serialPortName):
     
-    global  serialPort
+    global  serialPortOpenCR
     
-    serialPort = serial.Serial(port= serialPortName, baudrate = baudRate, timeout=0, rtscts=True)
+    serialPortOpenCR = serial.Serial(port= serialPortName, baudrate = baudRate, timeout=0, rtscts=True)
+
+    print("Serial port " + serialPortName + " opened  Baudrate " + str(baudRate))
+
+def setupSerialESP32(baudRate, serialPortName):
+    
+    global  serialPortESP32
+    
+    serialPortESP32 = serial.Serial(port= serialPortName, baudrate = baudRate, timeout=0, rtscts=True)
 
     print("Serial port " + serialPortName + " opened  Baudrate " + str(baudRate))
 
 #========================
 
-def sendToArduino(stringToSend):
+def sendToOpenCR(stringToSend):
     
         # this adds the start- and end-markers before sending
-    global startMarker, endMarker, serialPort
+    global startMarker, endMarker, serialPortOpenCR
     
     stringWithMarkers = (startMarker)
     stringWithMarkers += stringToSend
     stringWithMarkers += (endMarker)
 
-    serialPort.write(stringWithMarkers.encode('utf-8')) # encode needed for Python3
-
+    serialPortOpenCR.write(stringWithMarkers.encode('utf-8')) # encode needed for Python3
 
 #==================
 
-def recvLikeArduino():
+def recvFromOpenCR():
 
-    global startMarker, endMarker, serialPort, dataStarted, dataBuf, messageComplete
+    global startMarker, endMarker, serialPortOpenCR, dataStarted, dataBuf, messageComplete
 
-    if serialPort.inWaiting() > 0 and messageComplete == False:
-        x = serialPort.read().decode("utf-8") # decode needed for Python3
+    if serialPortOpenCR.inWaiting() > 0 and messageComplete == False:
+        x = serialPortOpenCR.read().decode("utf-8") # decode needed for Python3
         
         if dataStarted == True:
             if x != endMarker:
@@ -59,28 +66,53 @@ def recvLikeArduino():
     else:
         return "XXX" 
 
+def recvFromESP32():
+
+    global startMarker, endMarker, serialPortESP32, dataStarted, dataBuf, messageComplete
+
+    if serialPortESP32.inWaiting() > 0 and messageComplete == False:
+        x = serialPortESP32.read().decode("utf-8") # decode needed for Python3
+        
+        if dataStarted == True:
+            if x != endMarker:
+                dataBuf = dataBuf + x
+            else:
+                dataStarted = False
+                messageComplete = True
+        elif x == startMarker:
+            dataBuf = ''
+            dataStarted = True
+    
+    if (messageComplete):
+        messageComplete = False
+        return dataBuf
+    else:
+        return "XXX" 
 #====================
 #====================
     # the program
 
 
-setupSerial(115200, "COM10")
+setupSerialOpenCR(115200, "COM10")
+setupSerialESP32(115200, "COM7")
 count = 0
 prevTime = time.time()
 while True:
         # check for a reply
-    arduinoReply = recvLikeArduino()
-    if not (arduinoReply == 'XXX'):
-        print (arduinoReply)
-        
+    openCRReply = recvFromOpenCR()
+    if not (openCRReply == 'XXX'):
+        print ("OpenCR" + openCRReply)
+    
+    ESP32Reply = recvFromESP32()
+    print("ESP32 + " + ESP32Reply)
         # send a message at intervals
     if time.time() - prevTime > 3:
-        message0 = random.randint(0,359)
-        message1 = random.randint(0,359)
-        message2 = random.randint(0,359)
-        message3 = random.randint(0,359)
-        message4 = random.randint(0,359)
-        sendToArduino(str(message0) + "A" + str(message1) + "B" + str(message2) + "C" + str(message3) + "D" + str(message4) + "E")
-
+        #message0 = random.randint(0,359)
+        #message1 = random.randint(0,359)
+        #message2 = random.randint(0,359)
+        #message3 = random.randint(0,359)
+        #message4 = random.randint(0,359)
+        #sendToOpenCR(str(message0) + "A" + str(message1) + "B" + str(message2) + "C" + str(message3) + "D" + str(message4) + "E")
+        sendToOpenCR(ESP32Reply)
         prevTime = time.time()
         count += 1
