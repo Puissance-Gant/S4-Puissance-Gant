@@ -83,36 +83,43 @@ def recvFromESP32():
             dataBuf = ''
             dataStarted = True
     
-    if (messageComplete):
-        messageComplete = False
-        return dataBuf
-    else:
-        return "XXX" 
+    # if (messageComplete):
+    #     messageComplete = False
+    return dataBuf
+    # else:
+    #     return "XXX" 
 #====================
 #====================
     # the program
 
 
-setupSerialOpenCR(115200, "COM10")
-setupSerialESP32(115200, "COM7")
+setupSerialOpenCR(115200, "COM7")
+setupSerialESP32(115200, "COM5")
 count = 0
 prevTime = time.time()
+newData = False
+
+
 while True:
         # check for a reply
-    openCRReply = recvFromOpenCR()
-    if not (openCRReply == 'XXX'):
-        print ("OpenCR" + openCRReply)
     
     ESP32Reply = recvFromESP32()
-    print("ESP32 + " + ESP32Reply)
+
+    if not ESP32Reply == 'XXX' and newData:
+        print("ESP32 + " + ESP32Reply)
+        newData = False
         # send a message at intervals
-    if time.time() - prevTime > 3:
+
+    if time.time() - prevTime > 0.5:
+        newData = True
         #message0 = random.randint(0,359)
         #message1 = random.randint(0,359)
         #message2 = random.randint(0,359)
-        #message3 = random.randint(0,359)
-        #message4 = random.randint(0,359)
-        #sendToOpenCR(str(message0) + "A" + str(message1) + "B" + str(message2) + "C" + str(message3) + "D" + str(message4) + "E")
+        #sendToOpenCR(str(message0) + "A" + str(message1) + "B" + str(message2) + "C")
         sendToOpenCR(ESP32Reply)
+        
+        openCRReply = recvFromOpenCR()
+        if not (openCRReply == 'XXX'):
+            print ("OpenCR + " + openCRReply)
         prevTime = time.time()
         count += 1
