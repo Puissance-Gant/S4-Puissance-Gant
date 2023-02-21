@@ -7,6 +7,7 @@ class MessageIO:
 
     def addDevice(self, dev):
         self.devices.append(dev)
+        
     def getNbrDevices(self):
         return len(self.devices)
 
