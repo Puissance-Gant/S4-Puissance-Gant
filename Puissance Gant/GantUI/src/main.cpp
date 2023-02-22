@@ -90,7 +90,7 @@ void stringToSend()
             break;
             
         case MAJEUR:
-            serialData += String("C");
+            serialData += String("D");
             break;
         
         default:
