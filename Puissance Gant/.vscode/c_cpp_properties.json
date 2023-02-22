@@ -1,0 +1,64 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/include",
+                "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/src",
+                "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/Adafruit-PWM-Servo-Driver-Library",
+                "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/SparkFun_ADS1015_Arduino_Library/src",
+                "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/MPU9250",
+                "C:/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/.platformio/packages/framework-arduino-avr/variants/mega",
+                "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/dynamixel-workbench",
+                "C:/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/include",
+                    "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/src",
+                    "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/Adafruit-PWM-Servo-Driver-Library",
+                    "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/SparkFun_ADS1015_Arduino_Library/src",
+                    "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/MPU9250",
+                    "C:/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/.platformio/packages/framework-arduino-avr/variants/mega",
+                    "C:/Users/Frédérick Martin/OneDrive - USherbrooke/2023-S4-HIV/Projet/S4-Puissance-Gant/Puissance Gant/lib/dynamixel-workbench",
+                    "C:/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60106",
+                "ARDUINO_AVR_MEGA2560",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega2560__",
+                ""
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega2560",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
