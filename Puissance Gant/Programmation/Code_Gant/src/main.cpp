@@ -1,10 +1,20 @@
 #include <Arduino.h>
-#include <Wire.h>
-#include "analogWrite.h"
+#include "WiFi.h"
+#include "PubSubClient.h" // Connect and publish to the MQTT broker
 
-// Const:
-const unsigned MILLISECONDS = 10; // DELAY
-const uint8_t MODE_MAX = 3;       // Max number of modes
+// Wifi
+// Il est important de noter que le wifi est utilisé en connection en point d'accès avec un ordinateur portable 
+const char* ssid = "EQ7_puissance-gant";                // Nom du réseau personnelle
+const char* wifi_password = "EQ7_puissance-gant";       // Mot de passe du réseau
+
+// MQTT
+// moscito est le mqtt broker utiliser du au fait qu'il est gratuit et open-source
+const char* mqtt_server = "192.168.0.8";  // IP of the MQTT broker
+const char* humidity_topic = "home/livingroom/humidity";
+const char* temperature_topic = "home/livingroom/temperature";
+const char* mqtt_username = "cdavid"; // MQTT username
+const char* mqtt_password = "cdavid"; // MQTT password
+const char* clientID = "client_livingroom"; // MQTT client ID
 
 // Pins
 #define POUCE 34
@@ -32,6 +42,12 @@ struct Hand
     float imu[AXIS] = {0, 0, 0}; // Order for data: {LINEAR_X LINEAR_Y ROTATION_Z}
 } hand = {};
 
+
+// Initialise the WiFi and MQTT Client objects
+WiFiClient wifiClient;
+// 1883 is the listener port for the Broker
+PubSubClient client(mqtt_server, 1883, wifiClient); 
+
 /*-------------------------------------------------- setup functions --------------------------------------------------*/
 // Mode des pin pour la lecture des données
 void setupFlexSensors()
@@ -44,14 +60,7 @@ void setupFlexSensors()
 /// Parametre pour l'accelerometre
 void setupIMUSensor()
 {
-
-    // PLUS TARS
-    /* isFatalError[1] = !mpu.setup(0x68);
-    if (isFatalError[1]){
-      SerialBT.println("MPU9250 not found. Check wiring.");
-    } else {
-      mpu.calibrateAccelGyro();
-    } */
+    // PLUS TARD
 }
 
 /*-------------------------------------------------- loop functions --------------------------------------------------*/
@@ -104,8 +113,7 @@ void stringToSend()
 
 void setup()
 {
-    // Communication setup:
-    Wire.begin();
+    // Communication setup: 
     Serial.begin(115200);
 
     delay(1000);
