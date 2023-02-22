@@ -49,22 +49,23 @@ const int8_t POIGNET_ROT = 4;
 Moteur moteurs[NB_MOTEURS];
 
 // Fonctions =====
+
 //Changer l'objectif de positionnement et la vitesse d'un moteur
 void changerPosMoteurs(Moteur mot)
 {
-    Serial.print("<" + String(mot.posGoalActu) + ">");
     dxl.setGoalPosition(mot.id, mot.posGoalActu, UNIT_DEGREE);
 }
 
 void setupMoteurs(Moteur mot)
 {
-    // Get DYNAMIXEL information
-    Serial.print("<" + String(dxl.ping(mot.id)) + " : " + String(mot.id) + ">");
-
+    // Afficher l'état de connection des moteurs lors de l'initialisation
+    Serial.println("<" + String(dxl.ping(mot.id)) + " : " + String(mot.id) + ">");
+    
     // Turn off torque when configuring items in EEPROM area
     dxl.torqueOff(mot.id);
     dxl.setOperatingMode(mot.id, OP_POSITION);
     dxl.torqueOn(mot.id);
+    
 
     dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, 50);
     changerPosMoteurs(mot);
