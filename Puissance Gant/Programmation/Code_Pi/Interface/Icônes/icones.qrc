@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>color-circle-buttons-icons-website-game.zip</file>
+  </qresource>
+</RCC>
