@@ -116,6 +116,7 @@ while True:
         #message1 = random.randint(0,359)
         #message2 = random.randint(0,359)
         #sendToOpenCR(str(message0) + "A" + str(message1) + "B" + str(message2) + "C")
+        print()
         sendToOpenCR(ESP32Reply)
         
         openCRReply = recvFromOpenCR()
