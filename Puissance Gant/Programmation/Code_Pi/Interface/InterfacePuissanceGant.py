@@ -331,6 +331,7 @@ class Ui_MainWindow(object):
         self.LineEdit_ConsoleManuel.setFont(font)
         self.LineEdit_ConsoleManuel.setText("")
         self.LineEdit_ConsoleManuel.setFrame(False)
+        self.LineEdit_ConsoleManuel.setReadOnly(True)
         self.LineEdit_ConsoleManuel.setObjectName("LineEdit_ConsoleManuel")
         self.Frame_Manuel.raise_()
         self.Frame_Boutons.raise_()
@@ -416,13 +417,14 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">État du robot </p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">à modifier</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Puissance Gant - V1.0</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Mode automatique activé</p></body></html>"))
         self.Button_ManuelPouce.setText(_translate("MainWindow", "Pouce"))
         self.Button_ManuelIndex.setText(_translate("MainWindow", "Index"))
         self.Button_ManuelMajeur.setText(_translate("MainWindow", "Majeur"))
         self.Button_ManuelInclinaison.setText(_translate("MainWindow", "Inclinaison"))
         self.Button_ManuelRotation.setText(_translate("MainWindow", "Rotation"))
-        self.LineEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Écrire une commande ici"))
+        self.LineEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Mode automatique activé, console bloquée"))
 from pyqtgraph import PlotWidget
 import icones_rc
