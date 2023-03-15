@@ -282,13 +282,6 @@ class Ui_MainWindow(object):
         self.Button_ModeManuel.setCheckable(True)
         self.Button_ModeManuel.setChecked(False)
         self.Button_ModeManuel.setObjectName("Button_ModeManuel")
-        self.TextEdit_ConsoleManuel = QtWidgets.QTextEdit(self.Frame_Manuel)
-        self.TextEdit_ConsoleManuel.setGeometry(QtCore.QRect(210, 190, 420, 40))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.TextEdit_ConsoleManuel.setFont(font)
-        self.TextEdit_ConsoleManuel.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.TextEdit_ConsoleManuel.setObjectName("TextEdit_ConsoleManuel")
         self.Text_EtatDuRobot = QtWidgets.QTextEdit(self.Frame_Manuel)
         self.Text_EtatDuRobot.setGeometry(QtCore.QRect(210, 50, 420, 140))
         font = QtGui.QFont()
@@ -331,6 +324,14 @@ class Ui_MainWindow(object):
         self.Button_ManuelRotation.setObjectName("Button_ManuelRotation")
         self.ButtonGroup_MoteursModeManuel.addButton(self.Button_ManuelRotation)
         self.Layout_ChoixManuel.addWidget(self.Button_ManuelRotation)
+        self.LineEdit_ConsoleManuel = QtWidgets.QLineEdit(self.Frame_Manuel)
+        self.LineEdit_ConsoleManuel.setGeometry(QtCore.QRect(210, 190, 420, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.LineEdit_ConsoleManuel.setFont(font)
+        self.LineEdit_ConsoleManuel.setText("")
+        self.LineEdit_ConsoleManuel.setFrame(False)
+        self.LineEdit_ConsoleManuel.setObjectName("LineEdit_ConsoleManuel")
         self.Frame_Manuel.raise_()
         self.Frame_Boutons.raise_()
         self.Frame_Doigts.raise_()
@@ -411,12 +412,6 @@ class Ui_MainWindow(object):
         self.Label_ArretUrgence.setText(_translate("MainWindow", "Arrêt d\'urgence"))
         self.Label_ArretUrgence_2.setText(_translate("MainWindow", "Consommation d\'énergie"))
         self.Button_ModeManuel.setText(_translate("MainWindow", "Mode manuel"))
-        self.TextEdit_ConsoleManuel.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.TextEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Écrire la commande ici"))
         self.Text_EtatDuRobot.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -428,5 +423,6 @@ class Ui_MainWindow(object):
         self.Button_ManuelMajeur.setText(_translate("MainWindow", "Majeur"))
         self.Button_ManuelInclinaison.setText(_translate("MainWindow", "Inclinaison"))
         self.Button_ManuelRotation.setText(_translate("MainWindow", "Rotation"))
+        self.LineEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Écrire une commande ici"))
 from pyqtgraph import PlotWidget
 import icones_rc
