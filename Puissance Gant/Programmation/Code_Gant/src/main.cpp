@@ -173,5 +173,5 @@ void loop()
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(resistance_topic, String(serialData).c_str());
     }
-    delay(1000);
+    delay(50);
 }
