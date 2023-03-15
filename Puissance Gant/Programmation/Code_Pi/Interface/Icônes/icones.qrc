@@ -1,5 +1,7 @@
 <RCC>
-  <qresource prefix="newPrefix">
-    <file>color-circle-buttons-icons-website-game.zip</file>
+  <qresource prefix="PathIcones">
+    <file>crochet_vert.png</file>
+    <file>croix_rouge.png</file>
+    <file>arret_urgence.png</file>
   </qresource>
 </RCC>

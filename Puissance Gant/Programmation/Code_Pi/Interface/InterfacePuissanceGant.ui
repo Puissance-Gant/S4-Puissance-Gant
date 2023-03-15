@@ -29,146 +29,6 @@
    <string>Puissance Gant</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="Label_CrochetVert">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>315</x>
-      <y>480</y>
-      <width>48</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>48</width>
-      <height>48</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>48</width>
-      <height>48</height>
-     </size>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>Icônes/crochet_vert.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_CroixRouge">
-    <property name="geometry">
-     <rect>
-      <x>315</x>
-      <y>480</y>
-      <width>48</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>48</width>
-      <height>48</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>48</width>
-      <height>48</height>
-     </size>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>Icônes/croix_rouge.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="Texte_EtatComm">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>478</y>
-      <width>320</width>
-      <height>52</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;État de la communication &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="Texte_EtatComm_2">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>480</y>
-      <width>251</width>
-      <height>52</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temps d'envoi : &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_TempsEnvoi">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>487</y>
-      <width>73</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>100ms</string>
-    </property>
-   </widget>
    <widget class="QFrame" name="Frame_Comm">
     <property name="geometry">
      <rect>
@@ -187,6 +47,151 @@ p, li { white-space: pre-wrap; }
     <property name="lineWidth">
      <number>2</number>
     </property>
+    <widget class="QTextEdit" name="Text_EtatComm">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>20</y>
+       <width>320</width>
+       <height>52</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;État de la communication &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Label_CroixRouge">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>48</width>
+       <height>48</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Icônes/icones.qrc">:/PathIcones/croix_rouge.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Label_CrochetVert">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>48</width>
+       <height>48</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Icônes/icones.qrc">:/PathIcones/crochet_vert.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Label_TempsEnvoi">
+     <property name="geometry">
+      <rect>
+       <x>575</x>
+       <y>27</y>
+       <width>73</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>100ms</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="Text_TempsEnvoi">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>405</x>
+       <y>20</y>
+       <width>251</width>
+       <height>52</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temps d'envoi : &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <zorder>Text_EtatComm</zorder>
+    <zorder>Label_CroixRouge</zorder>
+    <zorder>Label_CrochetVert</zorder>
+    <zorder>Text_TempsEnvoi</zorder>
+    <zorder>Label_TempsEnvoi</zorder>
    </widget>
    <widget class="QFrame" name="Frame_Doigts">
     <property name="geometry">
@@ -226,12 +231,12 @@ p, li { white-space: pre-wrap; }
        <number>1</number>
       </property>
       <item>
-       <layout class="QVBoxLayout" name="LayoutDoigts">
+       <layout class="QVBoxLayout" name="Layout_Doigts">
         <property name="spacing">
          <number>0</number>
         </property>
         <item>
-         <widget class="QTextEdit" name="textEdit_18">
+         <widget class="QTextEdit" name="Text_Pouce">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -277,7 +282,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_17">
+         <widget class="QTextEdit" name="Text_Index">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -323,7 +328,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_2">
+         <widget class="QTextEdit" name="Text_Majeur">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -369,7 +374,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_16">
+         <widget class="QTextEdit" name="Text_Inclinaison">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -415,7 +420,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_15">
+         <widget class="QTextEdit" name="Text_Rotation">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -463,12 +468,12 @@ p, li { white-space: pre-wrap; }
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="LayoutAngles">
+       <layout class="QVBoxLayout" name="Layout_Angles">
         <property name="spacing">
          <number>0</number>
         </property>
         <item>
-         <widget class="QTextEdit" name="Texte_AnglePouce">
+         <widget class="QTextEdit" name="Text_PourcentagePouce">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -508,7 +513,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="Texte_AngleIndex">
+         <widget class="QTextEdit" name="Text_PourcentageIndex">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -548,7 +553,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="Texte_AngleMajeur">
+         <widget class="QTextEdit" name="Text_PourcentageMajeur">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -588,7 +593,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="Texte_AngleInclinaison">
+         <widget class="QTextEdit" name="Text_PourcentageInclinaison">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -628,7 +633,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_22">
+         <widget class="QTextEdit" name="Text_PourcentageRotation">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -690,11 +695,11 @@ p, li { white-space: pre-wrap; }
     <property name="lineWidth">
      <number>2</number>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="Label_ArretUrgence">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
+       <y>140</y>
        <width>136</width>
        <height>31</height>
       </rect>
@@ -721,8 +726,8 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>Icônes/arret_urgence.png</normaloff>Icônes/arret_urgence.png</iconset>
+      <iconset resource="Icônes/icones.qrc">
+       <normaloff>:/PathIcones/arret_urgence.png</normaloff>:/PathIcones/arret_urgence.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -737,18 +742,36 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="PlotWidget" name="widget" native="true">
+    <widget class="PlotWidget" name="Plot_Energie" native="true">
      <property name="geometry">
       <rect>
        <x>210</x>
        <y>10</y>
        <width>420</width>
-       <height>150</height>
+       <height>131</height>
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="Label_ArretUrgence_2">
+     <property name="geometry">
+      <rect>
+       <x>305</x>
+       <y>140</y>
+       <width>230</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Consommation d'énergie</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QFrame" name="Frame_Comm_3">
+   <widget class="QFrame" name="Frame_Manuel">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -766,7 +789,7 @@ p, li { white-space: pre-wrap; }
     <property name="lineWidth">
      <number>2</number>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="Button_ModeManuel">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -786,8 +809,11 @@ p, li { white-space: pre-wrap; }
      <property name="checkable">
       <bool>true</bool>
      </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="TextEdit_ConsoleManuel">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -809,10 +835,13 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Utilisateur peut écrire ici&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="placeholderText">
+      <string>Écrire la commande ici</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_3">
+    <widget class="QTextEdit" name="Text_EtatDuRobot">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -841,7 +870,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;à modifier&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="Line" name="line">
+    <widget class="Line" name="Line_SeparationConsole">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -854,7 +883,7 @@ p, li { white-space: pre-wrap; }
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -863,7 +892,7 @@ p, li { white-space: pre-wrap; }
        <height>141</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="Layout_ChoixManuel">
       <item>
        <widget class="QRadioButton" name="Button_ManuelPouce">
         <property name="text">
@@ -920,15 +949,10 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </widget>
-   <zorder>Frame_Comm_3</zorder>
+   <zorder>Frame_Manuel</zorder>
    <zorder>Frame_Boutons</zorder>
    <zorder>Frame_Doigts</zorder>
    <zorder>Frame_Comm</zorder>
-   <zorder>Texte_EtatComm</zorder>
-   <zorder>Label_CroixRouge</zorder>
-   <zorder>Label_CrochetVert</zorder>
-   <zorder>Texte_EtatComm_2</zorder>
-   <zorder>Label_TempsEnvoi</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
