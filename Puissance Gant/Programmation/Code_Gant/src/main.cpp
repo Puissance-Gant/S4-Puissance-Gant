@@ -31,7 +31,7 @@ const char* wifi_password = "klpi3552";           // Mot de passe du réseau
 
 // MQTT
 // mosquitto est le mqtt broker utiliser du au fait qu'il est gratuit et open-source
-const char* mqtt_server = "192.168.186.137";  // IP of the MQTT broker
+const char* mqtt_server = "192.168.119.137";  // IP of the MQTT broker
 const char* resistance_topic = "Eq7_PuissanceGant_S4/gant/resistance";
 const char* mqtt_username = "puissance"; // MQTT username
 const char* mqtt_password = "puissance"; // MQTT password
@@ -173,5 +173,5 @@ void loop()
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(resistance_topic, String(serialData).c_str());
     }
-    delay(50);
+    delay(1000);
 }
