@@ -1,5 +1,5 @@
 # Utilité de chaque fichier
-Cette section contient le code à installer sur l'OpenCR
+Cette section contient le code à installer sur l'OpenCR à partir d'ArduinoIDE
 
 ## lectureEtEcritureOpenCR.ino
 Ce fichier est le code principal de l'OpenCR. Celui-ci doit être ouvert avec l'ArduinoIDE (nous avons utilisé la version 2.0.0). Suivre le [guide d'installation d'ArduinoIDE pour l'OpenCR.](https://emanual.robotis.com/docs/en/parts/controller/opencr10/#install-on-windows)
