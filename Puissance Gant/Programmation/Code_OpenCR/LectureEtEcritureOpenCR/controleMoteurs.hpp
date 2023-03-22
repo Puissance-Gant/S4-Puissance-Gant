@@ -11,8 +11,9 @@ Pour changer les ID des moteurs dynamixel, il faut utiliser le Dynamixel Wizard 
 #ifndef CONTROLE_MOTEURS
     #define CONTROLE_MOTEURS
     #include <Arduino.h>
-    #include <Dynamixel2Arduino.h>
     #include <stdlib.h>
+    #include <Dynamixel2Arduino.h>
+
 #endif
 
 #pragma region moteurs    
