@@ -1,15 +1,6 @@
+# Architecture de la communication
+Le projet Puissance Gant utilise les protocoles MQTT et sériel pour faire communiquer les divers éléments. Le schéma suivant illustre les divers liens entre les contrôleurs et ordinateurs ainsi que les protocoles utilisés.
+![architecture_comm_2 drawio](https://user-images.githubusercontent.com/78489934/226781546-4904bf2b-a4fb-4c46-bea0-e4f384eb90f7.png)
 
-
-
-
-
-
-
-
-
-
-À faire 
-- La communication se fait avec l'aide d'un protocole MQTT. 
-- Le broker utilisé est mosquitto, car open source et gratuit. 
-- Expliquer le processus d'installation du server sur le pi 
-- 
+# Communication sans-fil par MQTT
+Fred do your thing :)
