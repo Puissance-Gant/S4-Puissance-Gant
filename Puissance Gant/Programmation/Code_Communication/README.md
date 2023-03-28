@@ -3,4 +3,4 @@ Le projet Puissance Gant utilise les protocoles MQTT et sériel pour faire commu
 ![architecture_comm_2 drawio](https://user-images.githubusercontent.com/78489934/226781546-4904bf2b-a4fb-4c46-bea0-e4f384eb90f7.png)
 
 # Communication sans-fil par MQTT
-Fred do your thing :)
+Cette section contient le processus pour l'installation et la configuration d'un serveur MQTT. MQTT est un protocole de communication sans fil utilisé dans les situation oû la bande passante est peu fiable ou faible. 
