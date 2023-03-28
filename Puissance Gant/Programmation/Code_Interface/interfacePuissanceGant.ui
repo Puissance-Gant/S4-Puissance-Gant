@@ -33,9 +33,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>460</y>
+      <y>414</y>
       <width>671</width>
-      <height>85</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -53,7 +53,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>25</x>
+       <x>20</x>
        <y>20</y>
        <width>320</width>
        <height>52</height>
@@ -76,7 +76,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="Label_CroixRouge">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>280</x>
        <y>20</y>
        <width>48</width>
        <height>48</height>
@@ -110,7 +110,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>280</x>
        <y>20</y>
        <width>48</width>
        <height>48</height>
@@ -162,9 +162,9 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="geometry">
       <rect>
-       <x>405</x>
+       <x>355</x>
        <y>20</y>
-       <width>251</width>
+       <width>301</width>
        <height>52</height>
       </rect>
      </property>
@@ -187,11 +187,68 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temps d'envoi : &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="Button_DemarrageServeur">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Démarrer le serveur</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Button_ConnexionServeur">
+     <property name="geometry">
+      <rect>
+       <x>238</x>
+       <y>80</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Connecter au serveur</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Button_AAjouter">
+     <property name="geometry">
+      <rect>
+       <x>457</x>
+       <y>80</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>à ajouter</string>
+     </property>
+    </widget>
     <zorder>Text_EtatComm</zorder>
     <zorder>Label_CroixRouge</zorder>
     <zorder>Label_CrochetVert</zorder>
     <zorder>Text_TempsEnvoi</zorder>
     <zorder>Label_TempsEnvoi</zorder>
+    <zorder>Button_DemarrageServeur</zorder>
+    <zorder>Button_ConnexionServeur</zorder>
+    <zorder>Button_AAjouter</zorder>
    </widget>
    <widget class="QFrame" name="Frame_Doigts">
     <property name="geometry">
@@ -777,7 +834,7 @@ p, li { white-space: pre-wrap; }
       <x>30</x>
       <y>190</y>
       <width>671</width>
-      <height>266</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -819,7 +876,7 @@ p, li { white-space: pre-wrap; }
        <x>210</x>
        <y>50</y>
        <width>420</width>
-       <height>140</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="font">
@@ -847,7 +904,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>180</y>
+       <y>150</y>
        <width>420</width>
        <height>16</height>
       </rect>
@@ -925,7 +982,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>190</y>
+       <y>160</y>
        <width>420</width>
        <height>40</height>
       </rect>

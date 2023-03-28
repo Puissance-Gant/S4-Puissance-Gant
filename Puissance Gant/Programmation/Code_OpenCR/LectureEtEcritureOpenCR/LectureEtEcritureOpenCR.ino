@@ -1,3 +1,5 @@
+//#include <Arduino_FreeRTOS.h>
+
 #include "lectureEtEcritureSerielle.hpp"
 
 /*
@@ -34,6 +36,14 @@ void setup() {
 //===============
 
 void loop() {
+    static int i = 0;
+    static const int NB_MSG_RECU_AVANT_ENVOI = 10
     recvWithStartEndMarkers();
-    //replyToPython();
+    if(i > NB_MSG_RECU_AVANT_ENVOI)
+    {
+        replyToPython();        
+        i = 0;
+    }
+    else
+        i++;    
 }
