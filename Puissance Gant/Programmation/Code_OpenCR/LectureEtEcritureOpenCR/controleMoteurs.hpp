@@ -13,6 +13,7 @@ Pour changer les ID des moteurs dynamixel, il faut utiliser le Dynamixel Wizard 
     #include <Arduino.h>
     #include <stdlib.h>
     #include <Dynamixel2Arduino.h>
+    #include <math.h>
 
 #endif
 
@@ -27,6 +28,7 @@ Pour changer les ID des moteurs dynamixel, il faut utiliser le Dynamixel Wizard 
 Dynamixel2Arduino dxl(DXL_SERIAL, DXL_DIR_PIN);
 
 const float DXL_PROTOCOL_VERSION = 2.0;
+const int V_IN_MOTEURS = 12;
 
 using namespace ControlTableItem;
 #pragma endregion
@@ -53,15 +55,20 @@ Moteur moteurs[NB_MOTEURS];
 //Changer l'objectif de positionnement et la vitesse d'un moteur
 void changerPosMoteurs(Moteur mot)
 {
-    Serial.print("<" + String(mot.posGoalActu) + ">");
     dxl.setGoalPosition(mot.id, mot.posGoalActu, UNIT_DEGREE);
+}
+
+String getPuissanceMoteurs()
+{
+    float courant = 0;
+    for(int i = 0; i < NB_MOTEURS; i++)
+        courant += dxl.getPresentCurrent(moteurs[i].id); //courant en mA
+    float puissance = courant*V_IN_MOTEURS;
+    return String(int(puissance)); //en mW
 }
 
 void setupMoteurs(Moteur mot)
 {
-    // Get DYNAMIXEL information
-    Serial.print("<" + String(dxl.ping(mot.id)) + " : " + String(mot.id) + ">");
-
     // Turn off torque when configuring items in EEPROM area
     dxl.torqueOff(mot.id);
     dxl.setOperatingMode(mot.id, OP_POSITION);

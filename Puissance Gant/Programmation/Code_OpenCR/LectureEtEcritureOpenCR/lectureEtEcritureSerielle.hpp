@@ -12,12 +12,15 @@ Le code en français représente les modifications apportées.
 #include <stdlib.h>
 #include "controleMoteurs.hpp"
 
+void replyToPython(String msg);
+
 const byte numChars = 128;
 //Complete list of recieved characters
 char receivedChars[numChars];
 String nouvelleDonnee;
 
 boolean newData = false;
+int tempsDepart = millis();
 
 void recvWithStartEndMarkers() {
     static boolean recvInProgress = false;
@@ -81,6 +84,11 @@ void recvWithStartEndMarkers() {
                         nouvelleDonnee = "";
                         break;
                     }
+                    case 'F':
+                    {                        
+                        replyToPython("change");
+                        break;
+                    }
                     default:
                     {
                         nouvelleDonnee += rc;
@@ -105,14 +113,19 @@ void recvWithStartEndMarkers() {
 /*Envoyer un message périodique à python
 
 Contient les informations du robot pour l'affichage*/
-void replyToPython() {
-    if (newData == true) {
+void replyToPython(String msg) {
+    //if (newData == true) {
         //Changer les serial print afin de mettre le message voulu
         //Serial.print("<This just in ... ");
-        Serial.print("<" + String(receivedChars) + ">");
+        if(msg != "")
+        {
+            Serial.print("<" + msg + ">");            
+        }
+
         //Serial.print("   ");
         //Serial.print(millis());
         //Serial.print('>');
-        newData = false;
-    }
+        if(newData)
+            newData = false;
+    //}
 }
