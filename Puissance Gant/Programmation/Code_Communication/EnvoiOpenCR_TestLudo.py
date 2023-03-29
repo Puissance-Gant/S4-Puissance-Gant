@@ -70,7 +70,6 @@ increment = 10
 tempsDernierMsg = time.time()
 tempsChangement = time.time()
 while True:
-
     if time.time() - prevTime > 0.1:
         newData = True
         if valeur > (360-abs(increment)) or valeur < abs(increment):
