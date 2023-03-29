@@ -29,5 +29,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+    moteurs[POUCE].posGoalActu = 10;
+    changerPosMoteur(moteurs[POUCE]);
 }
