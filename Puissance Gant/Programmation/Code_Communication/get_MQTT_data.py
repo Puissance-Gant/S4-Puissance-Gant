@@ -10,14 +10,15 @@ MQTT_TOPIC = 'Eq7_PuissanceGant_S4/gant/resistance'
 # Fonction MQTT 
 
 def on_connect(client, userdata, flags, rc):
-	print('Connected with result code'+ str(rc))
+	print('Connected with result code '+ str(rc))
 	client.subscribe(MQTT_TOPIC, 1)
 
-	
+
 
 def on_message(client, userdata, msg):
-	print(str(msg.payload))
+	#print(str(msg.payload))
 	OpenCR.sendToOpenCR(str(msg.payload))
+	client.publish()
 
 # ----------------------------------------------------------------------------
 # main 

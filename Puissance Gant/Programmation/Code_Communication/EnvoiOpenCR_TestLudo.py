@@ -8,11 +8,11 @@ dataBuf = ""
 messageComplete = False
 
 # anciennes positions envoyées aux moteurs
-anciennePosA = 0
-anciennePosB = 0
-anciennePosC = 0
-anciennePosD = 0
-anciennePosE = 0
+anciennePosA = int(0)
+anciennePosB = int(0)
+anciennePosC = int(0)
+anciennePosD = int(0)
+anciennePosE = int(0)
 CHANGEMENT_MIN = 5
 
 #========================
@@ -35,14 +35,15 @@ def sendToOpenCR(stringToSend):
 
     # Si le message à envoyer contient des positions de moteurs, on vérifie qu'il y a un assez grand mouvement 
     # Cela permet d'optimiser la taille des messages à envoyer
-    #if any(c in stringToSend for c in ('A', 'B', 'C', 'D', 'E')):
-    #    stringToSend = verifierPosMoteurs(stringToSend)
+    if any(c in stringToSend for c in 'ABCDE'):
+        stringToSend = verifierPosMoteurs(stringToSend)
+        print("stringToSend = " + stringToSend)
 
     #stringWithMarkers = (startMarker)
     stringWithMarkers = stringToSend
     #stringWithMarkers += (endMarker)
     serialPortOpenCR.write(stringWithMarkers.encode('utf-8')) # encode needed for Python3
-    #rint("taille du string : " + str(len(stringWithMarkers.encode('utf-8'))))
+    #print("taille du string : " + str(len(stringWithMarkers.encode('utf-8'))))
 
 #========================
 
@@ -52,43 +53,49 @@ def verifierPosMoteurs(message):
     valeur = ""
     msgFiltre = ""
     msgDepart = False
-    for char in message:
-        if msgDepart:
-            match char:
-                case 'A':
-                    if abs(int(valeur) - anciennePosA) > CHANGEMENT_MIN:
-                        msgFiltre = msgFiltre + valeur + 'A'
-                        anciennePosA = valeur
+    try:
+        for char in message:
+            if msgDepart:
+                match char:
+                    case 'A':
+                        if abs(int(valeur) - anciennePosA) > CHANGEMENT_MIN:
+                            print("A")
+                            msgFiltre = msgFiltre + valeur + 'A'
+                            anciennePosA = int(valeur)
                         valeur = ""
-                case 'B':
-                    if abs(int(valeur) - anciennePosB) > CHANGEMENT_MIN:
-                        msgFiltre = msgFiltre + valeur + 'B'
-                        anciennePosB = valeur
+                    case 'B':
+                        if abs(int(valeur) - anciennePosB) > CHANGEMENT_MIN:
+                            msgFiltre = msgFiltre + valeur + 'B'
+                            anciennePosB = int(valeur)
                         valeur = ""
-                case 'C':
-                    if abs(int(valeur) - anciennePosC) > CHANGEMENT_MIN:
-                        anciennePosC = valeur
-                        msgFiltre = msgFiltre + valeur + 'C'
+                    case 'C':
+                        if abs(int(valeur) - anciennePosC) > CHANGEMENT_MIN:
+                            anciennePosC = int(valeur)
+                            msgFiltre = msgFiltre + valeur + 'C'
                         valeur = ""
-                case 'D':
-                    if abs(int(valeur) - anciennePosD) > CHANGEMENT_MIN:
-                        anciennePosD = valeur
-                        msgFiltre = msgFiltre + valeur + 'D'
+                    case 'D':
+                        if abs(int(valeur) - anciennePosD) > CHANGEMENT_MIN:
+                            anciennePosD = int(valeur)
+                            msgFiltre = msgFiltre + valeur + 'D'
                         valeur = ""
-                case 'E':
-                    if abs(int(valeur) - anciennePosE) > CHANGEMENT_MIN:
-                        anciennePosE = valeur
-                        msgFiltre = msgFiltre + valeur + 'E'
+                    case 'E':
+                        if abs(int(valeur) - anciennePosE) > CHANGEMENT_MIN:
+                            print("E")
+                            anciennePosE = int(valeur)
+                            msgFiltre = msgFiltre + valeur + 'E'
                         valeur = ""
-                case '>':
-                    return msgFiltre
-                case _:
-                    valeur = valeur + char
-        
-        elif char == startMarker:
-            msgDepart = True
+                    case '>':
+                        return str('<' + msgFiltre + '>')
+                    case _:
+                        valeur = valeur + char
+                        #print(valeur)
+            
+            elif char == startMarker:
+                msgDepart = True
+    except Exception:
+        return "bruh"
     
-    return ""
+    return msgFiltre
         
 
         
