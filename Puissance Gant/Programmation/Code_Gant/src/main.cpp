@@ -26,16 +26,17 @@ struct Hand
 
 // Wifi
 // Il est important de noter que le wifi est utilisé en connection en point d'accès avec un ordinateur portable ou un cellulaire
-const char* ssid = "SM-G781W8869";                // Nom du réseau personnelle
-const char* wifi_password = "klpi3552";           // Mot de passe du réseau
+const char* ssid = "ludo";                // Nom du réseau personnelle
+const char* wifi_password = "puissance";           // Mot de passe du réseau
 
 // MQTT
 // mosquitto est le mqtt broker utiliser du au fait qu'il est gratuit et open-source
-const char* mqtt_server = "192.168.119.137";  // IP of the MQTT broker
+const char* mqtt_server = "192.168.137.254";  // IP of the MQTT broker
 const char* resistance_topic = "Eq7_PuissanceGant_S4/gant/resistance";
+const char* reset_topic = "Eq7_PuissanceGant_S4/gant/reset";
 const char* mqtt_username = "puissance"; // MQTT username
 const char* mqtt_password = "puissance"; // MQTT password
-const char* clientID = "puissance_gant"; // MQTT client ID
+const char* clientID = "gant"; // MQTT client ID
 
 // Initialise the WiFi and MQTT Client objects
 WiFiClient wifiClient;
@@ -117,7 +118,7 @@ void stringToSend()
             break;
 
         case INDEX:
-            serialData += String("B");
+            serialData += String("E");
             break;
             
         case MAJEUR:
@@ -161,17 +162,30 @@ void loop()
 
     // // MQTT can only transmit string
     // // PUBLISH to the MQTT Broker
+
+    // resistance_topic
     if (client.publish(resistance_topic, String(serialData).c_str())) {
          Serial.println("resistance sent!");
     }
 
-    // Again, client.publish will return a boolean value depending on whether it succeded or not.
-    // If the message failed to send, we will try again, as the connection may have broken.
     else {
         Serial.println("Resistance failed to send. Reconnecting to MQTT Broker and trying again");
         client.connect(clientID, mqtt_username, mqtt_password);
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(resistance_topic, String(serialData).c_str());
     }
-    delay(1000);
+
+    // reset_topic
+    if (client.publish(reset_topic, String("Je suis un bouton").c_str())) {
+        Serial.println("Reset sent!");
+    }
+
+    else {
+        Serial.println("Reset failed to send. Reconnecting to MQTT Broker and trying again");
+        client.connect(clientID, mqtt_username, mqtt_password);
+        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+        client.publish(reset_topic, String("Je suis un bouton").c_str());
+    }
+
+    delay(100);
 }
