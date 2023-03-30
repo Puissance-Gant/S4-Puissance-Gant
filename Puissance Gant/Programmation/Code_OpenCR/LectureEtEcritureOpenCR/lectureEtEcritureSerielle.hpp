@@ -84,11 +84,6 @@ void recvWithStartEndMarkers() {
                         nouvelleDonnee = "";
                         break;
                     }
-                    case 'F':
-                    {                        
-                        replyToPython("change");
-                        break;
-                    }
                     default:
                     {
                         nouvelleDonnee += rc;
