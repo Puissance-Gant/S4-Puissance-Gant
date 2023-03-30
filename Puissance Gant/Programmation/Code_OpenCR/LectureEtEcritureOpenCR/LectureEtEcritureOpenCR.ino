@@ -1,6 +1,8 @@
 //#include <Arduino_FreeRTOS.h>
-
+#include <string.h>
+#include <iostream>
 #include "lectureEtEcritureSerielle.hpp"
+
 
 /*
 Voici le code de fonctionnement de la carte OpenCR pour le projet Puissance Gant
@@ -13,7 +15,7 @@ Auteurs : Ludovic Comtois (coml1502)
 */
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(256000);
     while(!Serial);
 
     //Instanciation des moteurs
@@ -34,16 +36,19 @@ void setup() {
 }
 
 //===============
-
 void loop() {
-    static int i = 0;
-    static const int NB_MSG_RECU_AVANT_ENVOI = 10
+    static String puissance = "";
+    //static int i = 0;
+    //static const int NB_MSG_RECU_AVANT_ENVOI = 100;
+    static uint32_t tempsPrec = millis();
     recvWithStartEndMarkers();
-    if(i > NB_MSG_RECU_AVANT_ENVOI)
+    replyToPython("");
+    if(millis() - tempsPrec > 500) //mettre ça dans une tâche avec 500ms de temps entre chaque exécution
     {
-        replyToPython();        
-        i = 0;
+        tempsPrec = millis();
+        puissance = getPuissanceMoteurs();
+        replyToPython(puissance);
+        puissance = "";
     }
-    else
-        i++;    
+ 
 }
