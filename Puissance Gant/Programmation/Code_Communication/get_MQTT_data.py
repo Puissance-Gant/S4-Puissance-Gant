@@ -18,12 +18,14 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	#print(str(msg.payload))
 	OpenCR.sendToOpenCR(str(msg.payload))
-	client.publish()
+	mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
 
 # ----------------------------------------------------------------------------
 # main 
 
 def main():
+
+	global mqtt_client
 	OpenCR.setupSerialOpenCR(256000, "COM7")
 
 	mqtt_client = mqtt.Client("pc")
