@@ -37,7 +37,7 @@ def sendToOpenCR(stringToSend):
     # Cela permet d'optimiser la taille des messages à envoyer
     if any(c in stringToSend for c in 'ABCDE'):
         stringToSend = verifierPosMoteurs(stringToSend)
-        print("stringToSend = " + stringToSend)
+        #print("stringToSend = " + stringToSend)
 
     #stringWithMarkers = (startMarker)
     stringWithMarkers = stringToSend
@@ -59,7 +59,6 @@ def verifierPosMoteurs(message):
                 match char:
                     case 'A':
                         if abs(int(valeur) - anciennePosA) > CHANGEMENT_MIN:
-                            print("A")
                             msgFiltre = msgFiltre + valeur + 'A'
                             anciennePosA = int(valeur)
                         valeur = ""
@@ -80,7 +79,6 @@ def verifierPosMoteurs(message):
                         valeur = ""
                     case 'E':
                         if abs(int(valeur) - anciennePosE) > CHANGEMENT_MIN:
-                            print("E")
                             anciennePosE = int(valeur)
                             msgFiltre = msgFiltre + valeur + 'E'
                         valeur = ""
@@ -93,7 +91,7 @@ def verifierPosMoteurs(message):
             elif char == startMarker:
                 msgDepart = True
     except Exception:
-        return "bruh"
+        return ""
     
     return msgFiltre
         

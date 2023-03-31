@@ -5,6 +5,7 @@ MQTT_ADDRESS = "192.168.137.254"
 MQTT_USER = 'puissance'
 MQTT_PASSWORD = 'puissance'
 MQTT_TOPIC = 'Eq7_PuissanceGant_S4/gant/resistance'
+#MQTT_TOPIC2 = 'Eq7_PuissanceGant_S4/gant/reset'
 
 # ----------------------------------------------------------------------------
 # Fonction MQTT 
@@ -12,11 +13,16 @@ MQTT_TOPIC = 'Eq7_PuissanceGant_S4/gant/resistance'
 def on_connect(client, userdata, flags, rc):
 	print('Connected with result code '+ str(rc))
 	client.subscribe(MQTT_TOPIC, 1)
+	#client.subscribe(MQTT_TOPIC2, 1)
 
 
 
 def on_message(client, userdata, msg):
-	#print(str(msg.payload))
+	#print(str(msg.topic))
+	msgOpenCR = OpenCR.recvFromOpenCR()
+	if not (msgOpenCR == 'XXX'):
+		print("openCr : " + msgOpenCR)
+
 	OpenCR.sendToOpenCR(str(msg.payload))
 	mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
 
@@ -26,7 +32,7 @@ def on_message(client, userdata, msg):
 def main():
 
 	global mqtt_client
-	OpenCR.setupSerialOpenCR(256000, "COM7")
+	OpenCR.setupSerialOpenCR(256000, "COM10")
 
 	mqtt_client = mqtt.Client("pc")
 	mqtt_client.enable_logger()

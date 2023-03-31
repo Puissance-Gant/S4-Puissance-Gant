@@ -22,7 +22,7 @@ void setup() {
     moteurs[POUCE] = {31, 0, 50};
     moteurs[INDEX] = {36, 0, 50};
     moteurs[MAJEUR] = {37, 0, 50};
-    moteurs[POIGNET_INCL] = {17, 0, 50};
+    moteurs[POIGNET_INCL] = {17, 0, 50à};
     moteurs[POIGNET_ROT] = {19, 0, 50};
 
     //Setup des moteurs
@@ -43,7 +43,9 @@ void loop() {
     static uint32_t tempsPrec = millis();
     recvWithStartEndMarkers();
     replyToPython("");
-    if(millis() - tempsPrec > 500) //mettre ça dans une tâche avec 500ms de temps entre chaque exécution
+
+    // Envoyer la puissance consommée chaque 500 ms
+    if(millis() - tempsPrec > 500) 
     {
         tempsPrec = millis();
         puissance = getPuissanceMoteurs();

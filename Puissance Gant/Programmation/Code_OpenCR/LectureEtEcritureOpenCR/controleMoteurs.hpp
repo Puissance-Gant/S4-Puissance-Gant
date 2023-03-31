@@ -76,7 +76,8 @@ void setupMoteurs(Moteur mot)
     dxl.setOperatingMode(mot.id, OP_POSITION);
     dxl.torqueOn(mot.id);
 
-    dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, 50);
+    // Lancer le moteurs à 100% de sa vitesse à sa position de départ
+    dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, 100);
     changerPosMoteurs(mot);
 }
 
