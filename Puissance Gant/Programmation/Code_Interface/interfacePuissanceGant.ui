@@ -33,9 +33,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>414</y>
+      <y>454</y>
       <width>671</width>
-      <height>131</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -138,12 +138,12 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="Label_TempsEnvoi">
+    <widget class="QLabel" name="Label_DelaiResist">
      <property name="geometry">
       <rect>
-       <x>575</x>
+       <x>537</x>
        <y>27</y>
-       <width>73</width>
+       <width>111</width>
        <height>21</height>
       </rect>
      </property>
@@ -155,8 +155,11 @@ p, li { white-space: pre-wrap; }
      <property name="text">
       <string>100ms</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
-    <widget class="QTextEdit" name="Text_TempsEnvoi">
+    <widget class="QTextEdit" name="Text_LatenceGant">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -184,71 +187,14 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temps d'envoi : &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="Button_DemarrageServeur">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>201</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Démarrer le serveur</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="Button_ConnexionServeur">
-     <property name="geometry">
-      <rect>
-       <x>238</x>
-       <y>80</y>
-       <width>201</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Connecter au serveur</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="Button_AAjouter">
-     <property name="geometry">
-      <rect>
-       <x>457</x>
-       <y>80</y>
-       <width>201</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>à ajouter</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Latence gant :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <zorder>Text_EtatComm</zorder>
     <zorder>Label_CroixRouge</zorder>
     <zorder>Label_CrochetVert</zorder>
-    <zorder>Text_TempsEnvoi</zorder>
-    <zorder>Label_TempsEnvoi</zorder>
-    <zorder>Button_DemarrageServeur</zorder>
-    <zorder>Button_ConnexionServeur</zorder>
-    <zorder>Button_AAjouter</zorder>
+    <zorder>Text_LatenceGant</zorder>
+    <zorder>Label_DelaiResist</zorder>
    </widget>
    <widget class="QFrame" name="Frame_Doigts">
     <property name="geometry">
@@ -303,13 +249,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -349,13 +295,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -395,13 +341,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -441,13 +387,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -476,52 +422,6 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QTextEdit" name="Text_Rotation">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>180</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>180</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="html">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>
@@ -534,13 +434,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -574,13 +474,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -614,13 +514,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -654,53 +554,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="html">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="Text_PourcentageRotation">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>80</width>
-            <height>100</height>
+            <height>125</height>
            </size>
           </property>
           <property name="font">
@@ -834,7 +694,7 @@ p, li { white-space: pre-wrap; }
       <x>30</x>
       <y>190</y>
       <width>671</width>
-      <height>221</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -874,9 +734,9 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>50</y>
+       <y>20</y>
        <width>420</width>
-       <height>111</height>
+       <height>181</height>
       </rect>
      </property>
      <property name="font">
@@ -904,7 +764,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>150</y>
+       <y>190</y>
        <width>420</width>
        <height>16</height>
       </rect>
@@ -982,7 +842,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>160</y>
+       <y>200</y>
        <width>420</width>
        <height>40</height>
       </rect>
@@ -1005,6 +865,11 @@ p, li { white-space: pre-wrap; }
       <string>Mode automatique activé, console bloquée</string>
      </property>
     </widget>
+    <zorder>Button_ModeManuel</zorder>
+    <zorder>Text_EtatDuRobot</zorder>
+    <zorder>layoutWidget</zorder>
+    <zorder>LineEdit_ConsoleManuel</zorder>
+    <zorder>Line_SeparationConsole</zorder>
    </widget>
    <zorder>Frame_Manuel</zorder>
    <zorder>Frame_Boutons</zorder>
