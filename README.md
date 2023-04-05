@@ -13,9 +13,9 @@ Voici le répertoire du projet de session de l'équipe Puissance Gant :gloves::r
 </pre>
 
 ## Objectif du projet
-L'équipe Puissance Gant avait pour but de concevoir une main robotisée ainsi qu'un système de contrôle à distance intuitif. Le produit final consiste en une main à **trois** doigts contrôlés par un gant auquel des résistances flexibles et une centrale inertielle (*IMU*) sont attachées.
+L'équipe Puissance Gant avait pour but de concevoir une main robotisée ainsi qu'un système de contrôle à distance intuitif. Le produit final consiste en une main à trois doigts indépendemment contrôlés par un gant auquel des résistances flexibles et une centrale inertielle (*IMU*) sont attachées.
 
-Une carte ESP32 récolte les informations des capteurs et les envoie vers le Raspberry Pi par communication sans fil (protocole MQTT). Un ordinateur reçoit les données à distance et les transfère à une carte OpenCR par protocole sériel. Les moteurs Dynamixel sont ensuite contrôlés par la carte OpenCR et font bouger la main avec une latence minimale. Une interface peut fonctionner en parallèle afin d'afficher l'état du système et d'envoyer des commandes manuelles à l'OpenCR.
+Une carte ESP32 récolte les informations des capteurs et les envoie vers le Raspberry Pi par communication sans fil (protocole MQTT). Un ordinateur reçoit les données à distance et les transfère à une carte OpenCR par protocole sériel. Les moteurs Dynamixel sont ensuite contrôlés par la carte OpenCR et font bouger la main avec une latence minimale. Une interface fonctionne en parallèle afin d'afficher l'état du système et d'envoyer des commandes manuelles à l'OpenCR.
 
 Le protocole MQTT permet l'utilisation de la main indépendemment de la distance, car il ne faut qu'une connexion internet pour transférer les informations.
 
