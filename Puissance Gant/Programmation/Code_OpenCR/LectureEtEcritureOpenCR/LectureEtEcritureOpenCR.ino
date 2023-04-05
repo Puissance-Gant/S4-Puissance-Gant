@@ -22,7 +22,7 @@ void setup() {
     moteurs[POUCE] = {31, 0, 50};
     moteurs[INDEX] = {36, 0, 50};
     moteurs[MAJEUR] = {37, 0, 50};
-    moteurs[POIGNET_INCL] = {17, 0, 50à};
+    moteurs[POIGNET_INCL] = {17, 0, 50};
     moteurs[POIGNET_ROT] = {19, 0, 50};
 
     //Setup des moteurs

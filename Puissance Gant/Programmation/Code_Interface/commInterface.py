@@ -16,9 +16,6 @@ class CommInterface(QThread):
     msgConnexion = pyqtSignal(bool)
     valEnergie = pyqtSignal(int)
 
-    #tailleValEnergieTableau = 20;
-    #valEnergieTableau = tailleValEnergieTableau*[0]
-
     # ----------------------------------------------------------------------------
     # Fonction MQTT
     def __init__(self):
@@ -63,8 +60,7 @@ class CommInterface(QThread):
             delai = f"{1000*(time.time() - self.delaiResist):.1f}"
             self.msgDelaiResist.emit(delai + " ms")
 
-            #self.valEnergieTableau.append(int(1000*(time.time() - self.delaiResist)))
-            #self.valEnergieTableau.pop(0)
+            # Déplacer ce code lorsqu'on aura la communication avec l'OpenCR
             self.valEnergie.emit(int(1000*(time.time() - self.delaiResist)))
             self.delaiResist = time.time()
         mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)

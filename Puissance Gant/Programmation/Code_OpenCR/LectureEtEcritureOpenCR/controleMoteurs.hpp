@@ -62,7 +62,7 @@ String getPuissanceMoteurs()
 {
     float courant = 0;
     for(int i = 0; i < NB_MOTEURS; i++)
-        courant += dxl.getPresentCurrent(moteurs[i].id); //courant en mA
+        courant += abs(dxl.getPresentCurrent(moteurs[i].id)); //courant en mA
     float puissance = courant*V_IN_MOTEURS;
     return String(int(puissance)); //en mW
 

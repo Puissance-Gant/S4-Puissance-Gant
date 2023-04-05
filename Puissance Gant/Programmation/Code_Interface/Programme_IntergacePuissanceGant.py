@@ -30,12 +30,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.LineEdit_ConsoleManuel.returnPressed.connect(consoleManuel_EnvoyerCommande)
         self.Button_ArretUrgence.clicked.connect(button_ArretUrgence)
         self.Button_ModeManuel.clicked.connect(button_ModeManuel)
-        #self.Button_DemarrageServeur.clicked.connect(button_DemarrageServeur)
 
     def setupPlot(self):
         tailleValEnergieTableau = 20
         self.valEnergieTableau = tailleValEnergieTableau * [0]
+        self.Plot_Energie.setBackground('w')
+        self.Plot_Energie.showGrid(x=False, y=True)
         self.Plot_Energie.setYRange(0, 600)
+        self.Plot_Energie.setTitle("Puissance consommée (mW)", color='k')
 
 
 # Afficher la commande actuelle des moteurs dans le tableau de l'interface
@@ -104,7 +106,7 @@ def plot_Energie(val):
     window.valEnergieTableau.pop(0)
     window.valEnergieTableau.append(val)
     window.Plot_Energie.clear()
-    window.Plot_Energie.plot(window.valEnergieTableau)
+    window.Plot_Energie.plot(window.valEnergieTableau, pen=pyqtgraph.mkPen('k'))
 
 # endregion
 
