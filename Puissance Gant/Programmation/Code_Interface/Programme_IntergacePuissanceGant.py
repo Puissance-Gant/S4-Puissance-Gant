@@ -136,9 +136,6 @@ def text_CommandeMoteurs(msg):
                     case 'D':
                         window.Text_PourcentageInclinaison.setText(msgRecu + '%')
                         msgRecu = ""
-                    case 'E': # à retirer quand la comm n'aura plus de E
-                        #window.Text_PourcentageRotation.setText(msgRecu + '%')
-                        msgRecu = ""
                     case '>':
                         msgRecu = ""
                     case _:

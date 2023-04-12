@@ -28,21 +28,19 @@ def setupSerialOpenCR(baudRate, serialPortName):
 
 #========================
 
-def sendToOpenCR(stringToSend):
+def sendToOpenCR(msg):
     
         # this adds the start- and end-markers before sending
     global startMarker, endMarker, serialPortOpenCR
 
     # Si le message à envoyer contient des positions de moteurs, on vérifie qu'il y a un assez grand mouvement 
     # Cela permet d'optimiser la taille des messages à envoyer
-    if any(c in stringToSend for c in 'ABCDE'):
-        stringToSend = verifierPosMoteurs(stringToSend)
+    if any(c in msg for c in 'ABCD'):
+        msg = verifierPosMoteurs(msg)
+        print(msg)
         #print("stringToSend = " + stringToSend)
 
-    #stringWithMarkers = (startMarker)
-    stringWithMarkers = stringToSend
-    #stringWithMarkers += (endMarker)
-    serialPortOpenCR.write(stringWithMarkers.encode('utf-8')) # encode needed for Python3
+    serialPortOpenCR.write(msg.encode('utf-8')) # encode needed for Python3
     #print("taille du string : " + str(len(stringWithMarkers.encode('utf-8'))))
 
 #========================
@@ -76,11 +74,6 @@ def verifierPosMoteurs(message):
                         if abs(int(valeur) - anciennePosD) > CHANGEMENT_MIN:
                             anciennePosD = int(valeur)
                             msgFiltre = msgFiltre + valeur + 'D'
-                        valeur = ""
-                    case 'E':
-                        if abs(int(valeur) - anciennePosE) > CHANGEMENT_MIN:
-                            anciennePosE = int(valeur)
-                            msgFiltre = msgFiltre + valeur + 'E'
                         valeur = ""
                     case '>':
                         return str('<' + msgFiltre + '>')

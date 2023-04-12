@@ -29,6 +29,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-    moteurs[POUCE].posGoalActu = 10;
-    changerPosMoteur(moteurs[POUCE]);
+    static int pos = 0;
+    //pos = (pos+10);
+    moteurs[POIGNET_ROT].posGoalActu = pos;
+    Serial.println(changerPosMoteurs(moteurs[POIGNET_ROT]));
+    delay(500);
+
 }

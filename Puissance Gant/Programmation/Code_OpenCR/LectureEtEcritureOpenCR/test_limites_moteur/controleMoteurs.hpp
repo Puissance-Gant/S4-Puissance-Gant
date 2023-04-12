@@ -53,9 +53,9 @@ Moteur moteurs[NB_MOTEURS];
 
 // Fonctions =====
 //Changer l'objectif de positionnement et la vitesse d'un moteur
-void changerPosMoteurs(Moteur mot)
+int changerPosMoteurs(Moteur mot)
 {
-    dxl.setGoalPosition(mot.id, mot.posGoalActu, UNIT_DEGREE);
+    return dxl.setGoalPosition(mot.id, mot.posGoalActu, UNIT_DEGREE);
 }
 
 String getPuissanceMoteurs()
@@ -76,7 +76,7 @@ void setupMoteurs(Moteur mot)
     dxl.setOperatingMode(mot.id, OP_POSITION);
     dxl.torqueOn(mot.id);
 
-    dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, 50);
+    int res = dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, 50);
     changerPosMoteurs(mot);
 }
 

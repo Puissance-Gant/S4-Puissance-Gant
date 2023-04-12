@@ -19,11 +19,10 @@ void setup() {
     while(!Serial);
 
     //Instanciation des moteurs
-    moteurs[POUCE] = {31, 0, 50};
-    moteurs[INDEX] = {36, 0, 50};
-    moteurs[MAJEUR] = {37, 0, 50};
-    moteurs[POIGNET_INCL] = {17, 0, 50};
-    moteurs[POIGNET_ROT] = {19, 0, 50};
+    moteurs[POUCE] = {31, 0, 100, 220, 63};
+    moteurs[INDEX] = {36, 0, 100, 330, 130};
+    moteurs[MAJEUR] = {37, 0, 100, 111, 325};
+    moteurs[POIGNET] = {17, 0, 50, 105, 55};
 
     //Setup des moteurs
     // Set Port baudrate to 57600bps. This has to match with DYNAMIXEL baudrate.

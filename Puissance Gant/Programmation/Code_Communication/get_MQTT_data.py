@@ -4,28 +4,47 @@ import EnvoiOpenCR_TestLudo as OpenCR
 MQTT_ADDRESS = "192.168.137.254"
 MQTT_USER = 'puissance'
 MQTT_PASSWORD = 'puissance'
-MQTT_TOPIC = 'Eq7_PuissanceGant_S4/gant/resistance'
-#MQTT_TOPIC2 = 'Eq7_PuissanceGant_S4/gant/reset'
+
+MQTT_TOPIC_COMMANDES_AUTO = 'Eq7_PuissanceGant_S4/gant/commandes'
+MQTT_TOPIC_COMMANDE_MANUEL = 'Eq7_PuissanceGant_S4/interface/commande'
+MQTT_TOPIC_MANUEL_ACTIF = 'Eq7_PuissanceGant_S4/interface/manuel_actif'
+MQTT_TOPIC_ARRET_URGENCE_ACTIF = 'Eq7_PuissanceGant_S4/interface/arret_urgence_actif'
+MQTT_TOPIC_PUISSANCE = 'Eq7_PuissanceGant_S4/OpenCR/puissance'
+
+modeManuelActif = True
+arretUrgenceActif = False
+#MQTT_TOPIC_COMMANDES_AUTO2 = 'Eq7_PuissanceGant_S4/gant/reset'
 
 # ----------------------------------------------------------------------------
 # Fonction MQTT 
 
 def on_connect(client, userdata, flags, rc):
-	print('Connected with result code '+ str(rc))
-	client.subscribe(MQTT_TOPIC, 1)
-	#client.subscribe(MQTT_TOPIC2, 1)
+	print('Connected with result code ' + str(rc))
+	client.subscribe(MQTT_TOPIC_COMMANDES_AUTO, 1)
+	client.subscribe(MQTT_TOPIC_COMMANDE_MANUEL, 1)
+	client.subscribe(MQTT_TOPIC_MANUEL_ACTIF, 1)
+	client.subscribe(MQTT_TOPIC_ARRET_URGENCE_ACTIF, 1)
+    #client.subscribe(MQTT_TOPIC_PUISSANCE, 1)
+
+	#client.subscribe(MQTT_TOPIC_COMMANDES_AUTO2, 1)
 
 
 
 def on_message(client, userdata, msg):
-	#print(str(msg.topic))
+	global MQTT_TOPIC_COMMANDES_AUTO, modeManuelActif, arretUrgenceActif
 	msgOpenCR = OpenCR.recvFromOpenCR()
-	if not (msgOpenCR == 'XXX'):
-		print("openCr : " + msgOpenCR)
-
-	OpenCR.sendToOpenCR(str(msg.payload))
-	mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
-
+	if not (msgOpenCR == 'XXX'): # Envoyer la puissance au serveur
+		mqtt_client.publish(MQTT_TOPIC_PUISSANCE, msgOpenCR, qos=1, retain=False)
+	topic = msg.topic
+	if topic == MQTT_TOPIC_ARRET_URGENCE_ACTIF:
+		arretUrgenceActif = True if str(msg.payload).find('1') != -1 else False
+	elif topic == MQTT_TOPIC_MANUEL_ACTIF:
+		modeManuelActif = True if str(msg.payload).find('1') != -1 else False
+		#print(modeManuelActif)
+	elif topic == MQTT_TOPIC_COMMANDES_AUTO and not modeManuelActif and not arretUrgenceActif:
+		OpenCR.sendToOpenCR(str(msg.payload))
+	elif topic == MQTT_TOPIC_COMMANDE_MANUEL and modeManuelActif and not arretUrgenceActif:
+		OpenCR.sendToOpenCR(str(msg.payload))
 # ----------------------------------------------------------------------------
 # main 
 

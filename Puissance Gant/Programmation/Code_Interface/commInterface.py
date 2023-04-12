@@ -12,6 +12,7 @@ class CommInterface(QThread):
     MQTT_TOPIC_MANUEL_ACTIF = 'Eq7_PuissanceGant_S4/interface/manuel_actif'
     MQTT_TOPIC_MANUEL_COMMANDE = 'Eq7_PuissanceGant_S4/interface/commande'
     MQTT_TOPIC_ARRET_URGENCE_ACTIF = 'Eq7_PuissanceGant_S4/interface/arret_urgence_actif'
+    MQTT_TOPIC_PUISSANCE = 'Eq7_PuissanceGant_S4/OpenCR/puissance'
 
     msgCommandeAuto = pyqtSignal(str)
     msgDelaiCommandeAuto = pyqtSignal(str)
@@ -20,7 +21,7 @@ class CommInterface(QThread):
     valEnergie = pyqtSignal(int)
 
     # ----------------------------------------------------------------------------
-    # Fonction MQTT
+    # Fonctions MQTT
     def __init__(self):
         QThread.__init__(self)
         print('MQTT to influxDB bridge')
@@ -33,7 +34,6 @@ class CommInterface(QThread):
         mqtt_client.on_connect = self.on_connect
         mqtt_client.on_disconnect = self.on_disconnect
         mqtt_client.on_message = self.on_message
-
 
     def run(self):
         mqtt_client.connect_async(host=self.MQTT_ADDRESS, port=1883)
@@ -63,12 +63,13 @@ class CommInterface(QThread):
                 delai = f"{1000*(time.time() - self.delaiCommandeAuto):.1f}"
                 self.msgDelaiCommandeAuto.emit(delai)
 
-                # Déplacer ce code lorsqu'on aura la communication avec l'OpenCR
-                self.valEnergie.emit(int(1000*(time.time() - self.delaiCommandeAuto)))
+            case self.MQTT_TOPIC_CALIB:
+                print(msg.payload)
+
+            case self.MQTT_TOPIC_PUISSANCE:
+                self.valEnergie.emit(int(1000 * (time.time() - self.delaiCommandeAuto)))
                 self.delaiCommandeAuto = time.time()
 
-            case self.MQTT_TOPIC_CALIB:
-                print('calib')
             case _:
                 print('Autre topic')
         #elif mst.topif =
