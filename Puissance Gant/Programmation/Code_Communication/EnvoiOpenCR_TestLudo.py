@@ -28,7 +28,7 @@ def setupSerialOpenCR(baudRate, serialPortName):
 
 #========================
 
-def sendToOpenCR(stringToSend):
+def sendToOpenCR(stringToSend): 
     
         # this adds the start- and end-markers before sending
     global startMarker, endMarker, serialPortOpenCR
@@ -42,7 +42,7 @@ def sendToOpenCR(stringToSend):
     #stringWithMarkers = (startMarker)
     stringWithMarkers = stringToSend
     #stringWithMarkers += (endMarker)
-    serialPortOpenCR.write(stringWithMarkers.encode('utf-8')) # encode needed for Python3
+    serialPortOpenCR.write(stringWithMarkers.encode('utf-8')) #  v encode needed for Python3
     #print("taille du string : " + str(len(stringWithMarkers.encode('utf-8'))))
 
 #========================
