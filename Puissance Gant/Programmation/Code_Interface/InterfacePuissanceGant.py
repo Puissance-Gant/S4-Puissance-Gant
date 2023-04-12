@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
         self.Frame_Doigts.setMidLineWidth(0)
         self.Frame_Doigts.setObjectName("Frame_Doigts")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.Frame_Doigts)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 271, 531))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 80, 271, 451))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.Layout_InfoDoigts = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.Layout_InfoDoigts.setContentsMargins(0, 0, 0, 0)
@@ -94,8 +94,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Text_Pouce.sizePolicy().hasHeightForWidth())
         self.Text_Pouce.setSizePolicy(sizePolicy)
-        self.Text_Pouce.setMinimumSize(QtCore.QSize(180, 125))
-        self.Text_Pouce.setMaximumSize(QtCore.QSize(180, 125))
+        self.Text_Pouce.setMinimumSize(QtCore.QSize(180, 105))
+        self.Text_Pouce.setMaximumSize(QtCore.QSize(180, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_Pouce.setFont(font)
@@ -111,8 +111,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Text_Index.sizePolicy().hasHeightForWidth())
         self.Text_Index.setSizePolicy(sizePolicy)
-        self.Text_Index.setMinimumSize(QtCore.QSize(180, 125))
-        self.Text_Index.setMaximumSize(QtCore.QSize(180, 125))
+        self.Text_Index.setMinimumSize(QtCore.QSize(180, 105))
+        self.Text_Index.setMaximumSize(QtCore.QSize(180, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_Index.setFont(font)
@@ -128,8 +128,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Text_Majeur.sizePolicy().hasHeightForWidth())
         self.Text_Majeur.setSizePolicy(sizePolicy)
-        self.Text_Majeur.setMinimumSize(QtCore.QSize(180, 125))
-        self.Text_Majeur.setMaximumSize(QtCore.QSize(180, 125))
+        self.Text_Majeur.setMinimumSize(QtCore.QSize(180, 105))
+        self.Text_Majeur.setMaximumSize(QtCore.QSize(180, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_Majeur.setFont(font)
@@ -145,8 +145,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Text_Inclinaison.sizePolicy().hasHeightForWidth())
         self.Text_Inclinaison.setSizePolicy(sizePolicy)
-        self.Text_Inclinaison.setMinimumSize(QtCore.QSize(180, 125))
-        self.Text_Inclinaison.setMaximumSize(QtCore.QSize(180, 125))
+        self.Text_Inclinaison.setMinimumSize(QtCore.QSize(180, 105))
+        self.Text_Inclinaison.setMaximumSize(QtCore.QSize(180, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_Inclinaison.setFont(font)
@@ -161,8 +161,8 @@ class Ui_MainWindow(object):
         self.Layout_Angles.setSpacing(0)
         self.Layout_Angles.setObjectName("Layout_Angles")
         self.Text_PourcentagePouce = QtWidgets.QTextEdit(self.horizontalLayoutWidget)
-        self.Text_PourcentagePouce.setMinimumSize(QtCore.QSize(80, 125))
-        self.Text_PourcentagePouce.setMaximumSize(QtCore.QSize(80, 125))
+        self.Text_PourcentagePouce.setMinimumSize(QtCore.QSize(80, 105))
+        self.Text_PourcentagePouce.setMaximumSize(QtCore.QSize(80, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_PourcentagePouce.setFont(font)
@@ -173,8 +173,8 @@ class Ui_MainWindow(object):
         self.Text_PourcentagePouce.setObjectName("Text_PourcentagePouce")
         self.Layout_Angles.addWidget(self.Text_PourcentagePouce)
         self.Text_PourcentageIndex = QtWidgets.QTextEdit(self.horizontalLayoutWidget)
-        self.Text_PourcentageIndex.setMinimumSize(QtCore.QSize(80, 125))
-        self.Text_PourcentageIndex.setMaximumSize(QtCore.QSize(80, 125))
+        self.Text_PourcentageIndex.setMinimumSize(QtCore.QSize(80, 105))
+        self.Text_PourcentageIndex.setMaximumSize(QtCore.QSize(80, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_PourcentageIndex.setFont(font)
@@ -185,8 +185,8 @@ class Ui_MainWindow(object):
         self.Text_PourcentageIndex.setObjectName("Text_PourcentageIndex")
         self.Layout_Angles.addWidget(self.Text_PourcentageIndex)
         self.Text_PourcentageMajeur = QtWidgets.QTextEdit(self.horizontalLayoutWidget)
-        self.Text_PourcentageMajeur.setMinimumSize(QtCore.QSize(80, 125))
-        self.Text_PourcentageMajeur.setMaximumSize(QtCore.QSize(80, 125))
+        self.Text_PourcentageMajeur.setMinimumSize(QtCore.QSize(80, 105))
+        self.Text_PourcentageMajeur.setMaximumSize(QtCore.QSize(80, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_PourcentageMajeur.setFont(font)
@@ -197,8 +197,8 @@ class Ui_MainWindow(object):
         self.Text_PourcentageMajeur.setObjectName("Text_PourcentageMajeur")
         self.Layout_Angles.addWidget(self.Text_PourcentageMajeur)
         self.Text_PourcentageInclinaison = QtWidgets.QTextEdit(self.horizontalLayoutWidget)
-        self.Text_PourcentageInclinaison.setMinimumSize(QtCore.QSize(80, 125))
-        self.Text_PourcentageInclinaison.setMaximumSize(QtCore.QSize(80, 125))
+        self.Text_PourcentageInclinaison.setMinimumSize(QtCore.QSize(80, 105))
+        self.Text_PourcentageInclinaison.setMaximumSize(QtCore.QSize(80, 105))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.Text_PourcentageInclinaison.setFont(font)
@@ -209,6 +209,11 @@ class Ui_MainWindow(object):
         self.Text_PourcentageInclinaison.setObjectName("Text_PourcentageInclinaison")
         self.Layout_Angles.addWidget(self.Text_PourcentageInclinaison)
         self.Layout_InfoDoigts.addLayout(self.Layout_Angles)
+        self.textEdit = QtWidgets.QTextEdit(self.Frame_Doigts)
+        self.textEdit.setGeometry(QtCore.QRect(12, 15, 266, 65))
+        self.textEdit.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.textEdit.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.textEdit.setObjectName("textEdit")
         self.Frame_Boutons = QtWidgets.QFrame(self.centralwidget)
         self.Frame_Boutons.setGeometry(QtCore.QRect(30, 5, 671, 221))
         self.Frame_Boutons.setFrameShape(QtWidgets.QFrame.Box)
@@ -246,7 +251,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.Button_ModeManuel.setFont(font)
         self.Button_ModeManuel.setCheckable(True)
-        self.Button_ModeManuel.setChecked(False)
+        self.Button_ModeManuel.setChecked(True)
         self.Button_ModeManuel.setObjectName("Button_ModeManuel")
         self.Text_EtatDuRobot = QtWidgets.QTextEdit(self.Frame_Manuel)
         self.Text_EtatDuRobot.setGeometry(QtCore.QRect(210, 20, 420, 141))
@@ -293,7 +298,7 @@ class Ui_MainWindow(object):
         self.LineEdit_ConsoleManuel.setFont(font)
         self.LineEdit_ConsoleManuel.setText("")
         self.LineEdit_ConsoleManuel.setFrame(False)
-        self.LineEdit_ConsoleManuel.setReadOnly(True)
+        self.LineEdit_ConsoleManuel.setReadOnly(False)
         self.LineEdit_ConsoleManuel.setObjectName("LineEdit_ConsoleManuel")
         self.Button_ModeManuel.raise_()
         self.Text_EtatDuRobot.raise_()
@@ -351,22 +356,28 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100%</p></body></html>"))
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.Text_PourcentageIndex.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100%</p></body></html>"))
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.Text_PourcentageMajeur.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100%</p></body></html>"))
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.Text_PourcentageInclinaison.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100%</p></body></html>"))
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Dernière commande reçue</span></p></body></html>"))
         self.Label_ArretUrgence.setText(_translate("MainWindow", "Arrêt d\'urgence"))
         self.Button_ModeManuel.setText(_translate("MainWindow", "Mode manuel"))
         self.Text_EtatDuRobot.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -375,11 +386,11 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Puissance Gant - V1.0</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Mode automatique activé</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Mode manuel activé</p></body></html>"))
         self.Button_ManuelPouce.setText(_translate("MainWindow", "Pouce"))
         self.Button_ManuelIndex.setText(_translate("MainWindow", "Index"))
         self.Button_ManuelMajeur.setText(_translate("MainWindow", "Majeur"))
         self.Button_ManuelInclinaison.setText(_translate("MainWindow", "Inclinaison"))
-        self.LineEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Mode automatique activé, console bloquée"))
+        self.LineEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Écrire une commande ici"))
 from pyqtgraph import PlotWidget
 import icones_rc

@@ -224,9 +224,9 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>80</y>
        <width>271</width>
-       <height>531</height>
+       <height>451</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="Layout_InfoDoigts">
@@ -249,13 +249,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -295,13 +295,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -341,13 +341,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -387,13 +387,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>180</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -434,13 +434,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -465,7 +465,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p dir='rtl' style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -474,13 +474,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -505,7 +505,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p dir='rtl' style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -514,13 +514,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -545,7 +545,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p dir='rtl' style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -554,13 +554,13 @@ p, li { white-space: pre-wrap; }
           <property name="minimumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>80</width>
-            <height>125</height>
+            <height>105</height>
            </size>
           </property>
           <property name="font">
@@ -585,13 +585,37 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p dir='rtl' style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
      </layout>
+    </widget>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>12</x>
+       <y>15</y>
+       <width>266</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Dernière commande reçue&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
     </widget>
    </widget>
    <widget class="QFrame" name="Frame_Boutons">
@@ -709,7 +733,7 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
      <property name="checked">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QTextEdit" name="Text_EtatDuRobot">
@@ -739,7 +763,7 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Puissance Gant - V1.0&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Mode automatique activé&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Mode manuel activé&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="Line" name="Line_SeparationConsole">
@@ -831,10 +855,10 @@ p, li { white-space: pre-wrap; }
       <bool>false</bool>
      </property>
      <property name="readOnly">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="placeholderText">
-      <string>Mode automatique activé, console bloquée</string>
+      <string>Écrire une commande ici</string>
      </property>
     </widget>
     <zorder>Button_ModeManuel</zorder>

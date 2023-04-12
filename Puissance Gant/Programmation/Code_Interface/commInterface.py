@@ -7,10 +7,11 @@ class CommInterface(QThread):
     MQTT_ADDRESS = "192.168.137.254"
     MQTT_USER = 'puissance'
     MQTT_PASSWORD = 'puissance'
-    MQTT_TOPIC_RESIST = 'Eq7_PuissanceGant_S4/gant/commandes'
+    MQTT_TOPIC_COMMANDE = 'Eq7_PuissanceGant_S4/gant/commandes'
     MQTT_TOPIC_CALIB = 'Eq7_PuissanceGant_S4/gant/calibration'
     MQTT_TOPIC_MANUEL_ACTIF = 'Eq7_PuissanceGant_S4/interface/manuel_actif'
     MQTT_TOPIC_MANUEL_COMMANDE = 'Eq7_PuissanceGant_S4/interface/commande'
+    MQTT_TOPIC_ARRET_URGENCE_ACTIF = 'Eq7_PuissanceGant_S4/interface/arret_urgence_actif'
 
     msgCommandeAuto = pyqtSignal(str)
     msgDelaiCommandeAuto = pyqtSignal(str)
@@ -44,7 +45,7 @@ class CommInterface(QThread):
 
     def on_connect(self, client, userdata, flags, rc):
         print('Connected with result code ' + str(rc))
-        client.subscribe(self.MQTT_TOPIC_RESIST, 1)
+        client.subscribe(self.MQTT_TOPIC_COMMANDE, 1)
         client.subscribe(self.MQTT_TOPIC_CALIB, 1)
 
         self.msgConnexion.emit(True)
@@ -56,15 +57,18 @@ class CommInterface(QThread):
     def on_message(self, client, userdata, msg):
         # print(str(msg.topic))
         match msg.topic:
-            case self.MQTT_TOPIC_RESIST:
-        #if msg.topic == self.MQTT_TOPIC_RESIST:  # Message contenant la commande de l'ESP32
+            case self.MQTT_TOPIC_COMMANDE:
+                #if msg.topic == self.MQTT_TOPIC_COMMANDE:  # Message contenant la commande de l'ESP32
                 self.msgCommandeAuto.emit(str(msg.payload))
                 delai = f"{1000*(time.time() - self.delaiCommandeAuto):.1f}"
-                self.msgDelaiCommandeAuto.emit(delai + " ms")
+                self.msgDelaiCommandeAuto.emit(delai)
 
                 # Déplacer ce code lorsqu'on aura la communication avec l'OpenCR
                 self.valEnergie.emit(int(1000*(time.time() - self.delaiCommandeAuto)))
                 self.delaiCommandeAuto = time.time()
+
+            case self.MQTT_TOPIC_CALIB:
+                print('calib')
             case _:
                 print('Autre topic')
         #elif mst.topif =
@@ -73,6 +77,14 @@ class CommInterface(QThread):
     def envoyerCommandeManuelle(self, commande):
         msg = '<' + str(commande) + '>'
         mqtt_client.publish(self.MQTT_TOPIC_MANUEL_COMMANDE, msg, qos=1, retain=False)
+
+    # Indiquer au serveur que l'arrêt d'urgence est activé
+    def envoyerArretUrgenceActif(self, actif: bool):
+        if actif:
+            msg = '1'
+        else:
+            msg = '0'
+        mqtt_client.publish(self.MQTT_TOPIC_ARRET_URGENCE_ACTIF, msg, qos=2, retain=False)
     # ----------------------------------------------------------------------------
     # main
 

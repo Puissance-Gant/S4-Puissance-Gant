@@ -18,6 +18,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setupPlot()
 
+        self.tabTempsCommande = 5*[0]
+        self.indiceTempsCommande = 0
+
         self.commInterface = CommInterface()
         self.commInterface.start()
         self.commInterface.msgCommandeAuto.connect(text_CommandeMoteurs)
@@ -47,7 +50,7 @@ def button_ModeManuel():
     # Possiblement fait avec un tableau de valeurs de position des moteurs envoyé à chaque
     # ===================
     if window.Button_ModeManuel.isChecked():
-        window.Text_EtatDuRobot.setText("Mode manuel activé \nEntrer le pourcentage du moteur choisi \n\nFormat : 50")
+        window.Text_EtatDuRobot.setText("Mode manuel activé \nEntrer le pourcentage du moteur choisi \n\nExemple : 50")
 
         window.LineEdit_ConsoleManuel.setReadOnly(False)
         window.LineEdit_ConsoleManuel.clear()
@@ -65,11 +68,13 @@ def button_ArretUrgence():
         window.Text_EtatDuRobot.setText("Arrêt d'urgence activé." + "\n\n" + "Robot désactivé, moteurs bloqués.")
         window.Button_ModeManuel.setEnabled(False)
         window.LineEdit_ConsoleManuel.setEnabled(False)
+        window.commInterface.envoyerArretUrgenceActif(True)
     else:
         window.Button_ModeManuel.setEnabled(True)
         window.LineEdit_ConsoleManuel.setEnabled(True)
         window.Button_ModeManuel.setChecked(True)
         button_ModeManuel()
+        window.commInterface.envoyerArretUrgenceActif(False)
 
 
 
@@ -83,12 +88,16 @@ def envoyerCommandeManuelle(msg):
     boutonActif = window.ButtonGroup_MoteursModeManuel.checkedButton().objectName()
     if boutonActif.__contains__('Pouce'):
         window.commInterface.envoyerCommandeManuelle(msg + 'A')
+        window.Text_PourcentagePouce.setText(msg + '%')
     elif boutonActif.__contains__('Index'):
         window.commInterface.envoyerCommandeManuelle(msg + 'B')
+        window.Text_PourcentageIndex.setText(msg + '%')
     elif boutonActif.__contains__('Majeur'):
         window.commInterface.envoyerCommandeManuelle(msg + 'C')
+        window.Text_PourcentageMajeur.setText(msg + '%')
     elif boutonActif.__contains__('Incl'):
         window.commInterface.envoyerCommandeManuelle(msg + 'D')
+        window.Text_PourcentageInclinaison.setText(msg + '%')
 
 # Lire et analyser la console d'entrée manuelle
 def consoleManuel_EnvoyerCommande():
@@ -111,35 +120,40 @@ def consoleManuel_EnvoyerCommande():
 def text_CommandeMoteurs(msg):
     msgRecu = ""
     msgDemarre = False
-    for c in msg:
-        if msgDemarre:
-            match c:
-                case 'A':
-                    window.Text_PourcentagePouce.setText(msgRecu + '%')
-                    msgRecu = ""
-                case 'B':
-                    window.Text_PourcentageIndex.setText(msgRecu + '%')
-                    msgRecu = ""
-                case 'C':
-                    window.Text_PourcentageMajeur.setText(msgRecu + '%')
-                    msgRecu = ""
-                case 'D':
-                    window.Text_PourcentageInclinaison.setText(msgRecu + '%')
-                    msgRecu = ""
-                case 'E': # à retirer quand la comm n'aura plus de E
-                    #window.Text_PourcentageRotation.setText(msgRecu + '%')
-                    msgRecu = ""
-                case '>':
-                    msgRecu = ""
-                case _:
-                    msgRecu = msgRecu + c
-        elif c == '<':
-            msgDemarre = True
+    if not window.Button_ArretUrgence.isChecked() and not window.Button_ModeManuel.isChecked():
+        for c in msg:
+            if msgDemarre:
+                match c:
+                    case 'A':
+                        window.Text_PourcentagePouce.setText(msgRecu + '%')
+                        msgRecu = ""
+                    case 'B':
+                        window.Text_PourcentageIndex.setText(msgRecu + '%')
+                        msgRecu = ""
+                    case 'C':
+                        window.Text_PourcentageMajeur.setText(msgRecu + '%')
+                        msgRecu = ""
+                    case 'D':
+                        window.Text_PourcentageInclinaison.setText(msgRecu + '%')
+                        msgRecu = ""
+                    case 'E': # à retirer quand la comm n'aura plus de E
+                        #window.Text_PourcentageRotation.setText(msgRecu + '%')
+                        msgRecu = ""
+                    case '>':
+                        msgRecu = ""
+                    case _:
+                        msgRecu = msgRecu + c
+            elif c == '<':
+                msgDemarre = True
 
 
-
+# Indique le délai entre les commandes envoyées par le gant (Moyenne mobile)
 def label_delaiResist(msg):
-    window.Label_DelaiResist.setText(msg)
+    window.tabTempsCommande[window.indiceTempsCommande] = float(msg)
+    window.indiceTempsCommande = window.indiceTempsCommande + 1
+    if window.indiceTempsCommande == len(window.tabTempsCommande) - 1:
+        window.Label_DelaiResist.setText(msg + " ms")
+        window.indiceTempsCommande = 0
 
 # endregion
 
