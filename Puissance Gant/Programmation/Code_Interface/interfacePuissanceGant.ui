@@ -808,16 +808,6 @@ p, li { white-space: pre-wrap; }
         </attribute>
        </widget>
       </item>
-      <item>
-       <widget class="QRadioButton" name="Button_ManuelRotation">
-        <property name="text">
-         <string>Rotation</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">ButtonGroup_MoteursModeManuel</string>
-        </attribute>
-       </widget>
-      </item>
      </layout>
     </widget>
     <widget class="QLineEdit" name="LineEdit_ConsoleManuel">

@@ -7,12 +7,14 @@ class CommInterface(QThread):
     MQTT_ADDRESS = "192.168.137.254"
     MQTT_USER = 'puissance'
     MQTT_PASSWORD = 'puissance'
-    MQTT_TOPIC_RESIST = 'Eq7_PuissanceGant_S4/gant/resistance'
-    MQTT_TOPIC_CALIB = 'Eq7_PuissanceGant_S4/gant/reset'
+    MQTT_TOPIC_RESIST = 'Eq7_PuissanceGant_S4/gant/commandes'
+    MQTT_TOPIC_CALIB = 'Eq7_PuissanceGant_S4/gant/calibration'
+    MQTT_TOPIC_MANUEL_ACTIF = 'Eq7_PuissanceGant_S4/interface/manuel_actif'
+    MQTT_TOPIC_MANUEL_COMMANDE = 'Eq7_PuissanceGant_S4/interface/commande'
 
-    msgResist = pyqtSignal(str)
-    msgDelaiResist = pyqtSignal(str)
-    delaiResist = time.time()
+    msgCommandeAuto = pyqtSignal(str)
+    msgDelaiCommandeAuto = pyqtSignal(str)
+    delaiCommandeAuto = time.time()
     msgConnexion = pyqtSignal(bool)
     valEnergie = pyqtSignal(int)
 
@@ -51,21 +53,26 @@ class CommInterface(QThread):
         print('Disconnected from broker')
         self.msgConnexion.emit(False)
 
-
-
     def on_message(self, client, userdata, msg):
         # print(str(msg.topic))
-        if msg.topic == self.MQTT_TOPIC_RESIST:  # Message contenant la commande de l'ESP32
-            self.msgResist.emit(str(msg.payload))
-            delai = f"{1000*(time.time() - self.delaiResist):.1f}"
-            self.msgDelaiResist.emit(delai + " ms")
+        match msg.topic:
+            case self.MQTT_TOPIC_RESIST:
+        #if msg.topic == self.MQTT_TOPIC_RESIST:  # Message contenant la commande de l'ESP32
+                self.msgCommandeAuto.emit(str(msg.payload))
+                delai = f"{1000*(time.time() - self.delaiCommandeAuto):.1f}"
+                self.msgDelaiCommandeAuto.emit(delai + " ms")
 
-            # Déplacer ce code lorsqu'on aura la communication avec l'OpenCR
-            self.valEnergie.emit(int(1000*(time.time() - self.delaiResist)))
-            self.delaiResist = time.time()
+                # Déplacer ce code lorsqu'on aura la communication avec l'OpenCR
+                self.valEnergie.emit(int(1000*(time.time() - self.delaiCommandeAuto)))
+                self.delaiCommandeAuto = time.time()
+            case _:
+                print('Autre topic')
+        #elif mst.topif =
         mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
 
-
+    def envoyerCommandeManuelle(self, commande):
+        msg = '<' + str(commande) + '>'
+        mqtt_client.publish(self.MQTT_TOPIC_MANUEL_COMMANDE, msg, qos=1, retain=False)
     # ----------------------------------------------------------------------------
     # main
 

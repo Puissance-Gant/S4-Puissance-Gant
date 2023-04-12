@@ -286,10 +286,6 @@ class Ui_MainWindow(object):
         self.Button_ManuelInclinaison.setObjectName("Button_ManuelInclinaison")
         self.ButtonGroup_MoteursModeManuel.addButton(self.Button_ManuelInclinaison)
         self.Layout_ChoixManuel.addWidget(self.Button_ManuelInclinaison)
-        self.Button_ManuelRotation = QtWidgets.QRadioButton(self.layoutWidget)
-        self.Button_ManuelRotation.setObjectName("Button_ManuelRotation")
-        self.ButtonGroup_MoteursModeManuel.addButton(self.Button_ManuelRotation)
-        self.Layout_ChoixManuel.addWidget(self.Button_ManuelRotation)
         self.LineEdit_ConsoleManuel = QtWidgets.QLineEdit(self.Frame_Manuel)
         self.LineEdit_ConsoleManuel.setGeometry(QtCore.QRect(210, 160, 420, 40))
         font = QtGui.QFont()
@@ -384,7 +380,6 @@ class Ui_MainWindow(object):
         self.Button_ManuelIndex.setText(_translate("MainWindow", "Index"))
         self.Button_ManuelMajeur.setText(_translate("MainWindow", "Majeur"))
         self.Button_ManuelInclinaison.setText(_translate("MainWindow", "Inclinaison"))
-        self.Button_ManuelRotation.setText(_translate("MainWindow", "Rotation"))
         self.LineEdit_ConsoleManuel.setPlaceholderText(_translate("MainWindow", "Mode automatique activé, console bloquée"))
 from pyqtgraph import PlotWidget
 import icones_rc
