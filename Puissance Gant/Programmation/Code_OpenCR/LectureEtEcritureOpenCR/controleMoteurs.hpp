@@ -71,15 +71,21 @@ void changerPosMoteurs(Moteur mot)
     else if(mot.id == moteurs[INDEX].id)
         delta = (0.19*mot.posGoalActu + 30)*poignet.posGoalActu/100;
     else if(mot.id == moteurs[MAJEUR].id)
-        delta = (0.39*mot.posGoalActu + 36)*poignet.posGoalActu/100;
+        delta = -(0.39*mot.posGoalActu + 36)*poignet.posGoalActu/100;
     else if(mot.id == poignet.id)
         delta = 0;
 
     delta *= poignet.posGoalActu/100;
     
     float angleMot = pente * mot.posGoalActu + (float)mot.posOuvert - delta;
-    
     dxl.setGoalPosition(mot.id, angleMot, UNIT_DEGREE);
+
+    if(mot.id == poignet.id)
+    {
+        changerPosMoteurs(moteurs[POUCE]);
+        changerPosMoteurs(moteurs[INDEX]);
+        changerPosMoteurs(moteurs[MAJEUR]);
+    }
 }
 
 String getPuissanceMoteurs()
@@ -91,6 +97,21 @@ String getPuissanceMoteurs()
     return String(int(puissance)); //en mW
 
     //return String(moteurs[POIGNET_ROT].posGoalActu);
+}
+
+void arretUrgence(bool arretActif)
+{
+    if(arretActif)
+    {
+        for(int i=0; i < NB_MOTEURS; i++)
+            dxl.torqueOff(moteurs[i].id);
+    }
+    else
+    {
+        for(int i=0; i < NB_MOTEURS; i++)
+            dxl.torqueOn(moteurs[i].id);
+    }
+
 }
 
 void setupMoteurs(Moteur mot)

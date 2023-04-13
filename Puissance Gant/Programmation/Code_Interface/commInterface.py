@@ -79,6 +79,12 @@ class CommInterface(QThread):
         msg = '<' + str(commande) + '>'
         mqtt_client.publish(self.MQTT_TOPIC_MANUEL_COMMANDE, msg, qos=1, retain=False)
 
+    def envoyerManuelActif(self, actif):
+        if actif:
+            msg = '1'
+        else:
+            msg = '0'
+        mqtt_client.publish(self.MQTT_TOPIC_MANUEL_ACTIF, msg, qos=2, retain=False)
     # Indiquer au serveur que l'arrêt d'urgence est activé
     def envoyerArretUrgenceActif(self, actif: bool):
         if actif:

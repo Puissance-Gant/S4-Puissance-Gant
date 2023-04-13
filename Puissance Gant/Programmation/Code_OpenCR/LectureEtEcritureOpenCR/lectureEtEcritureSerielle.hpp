@@ -23,6 +23,8 @@ boolean newData = false;
 int tempsDepart = millis();
 
 void recvWithStartEndMarkers() {
+    static String puissance = "";
+    static uint32_t tempsPrec = millis();
     static boolean recvInProgress = false;
     static byte ndx = 0;
     static char startMarker = '<';
@@ -72,6 +74,15 @@ void recvWithStartEndMarkers() {
                         nouvelleDonnee = "";
                         break;
                     }
+                    case 'U': //Poignet en inclinaison
+                    {
+                        if(nouvelleDonnee == "1")
+                            arretUrgence(true);
+                        else
+                            arretUrgence(false);
+                        nouvelleDonnee = "";
+                        break;
+                    }
                     default:
                     {
                         nouvelleDonnee += rc;
@@ -84,6 +95,15 @@ void recvWithStartEndMarkers() {
                 recvInProgress = false;
                 ndx = 0;
                 newData = true;
+
+                // À chaque fois qu'on reçoit un nouveau message, vérifier pour envoyer la puissance
+                if(millis() - tempsPrec > 1000) 
+                {
+                    tempsPrec = millis();
+                    puissance = getPuissanceMoteurs();
+                    replyToPython(puissance);
+                    //puissance = "";
+                }
             }
         }
 
@@ -91,6 +111,7 @@ void recvWithStartEndMarkers() {
             recvInProgress = true;
         }
     }
+    
 }
 
 /*Envoyer un message périodique à python

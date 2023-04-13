@@ -24,9 +24,6 @@ def on_connect(client, userdata, flags, rc):
 	client.subscribe(MQTT_TOPIC_COMMANDE_MANUEL, 1)
 	client.subscribe(MQTT_TOPIC_MANUEL_ACTIF, 1)
 	client.subscribe(MQTT_TOPIC_ARRET_URGENCE_ACTIF, 1)
-    #client.subscribe(MQTT_TOPIC_PUISSANCE, 1)
-
-	#client.subscribe(MQTT_TOPIC_COMMANDES_AUTO2, 1)
 
 
 
@@ -38,13 +35,20 @@ def on_message(client, userdata, msg):
 	topic = msg.topic
 	if topic == MQTT_TOPIC_ARRET_URGENCE_ACTIF:
 		arretUrgenceActif = True if str(msg.payload).find('1') != -1 else False
+		msgArretUrgence = '<1U>' if arretUrgenceActif else '<0U>'
+		OpenCR.sendToOpenCR(msgArretUrgence)
+
 	elif topic == MQTT_TOPIC_MANUEL_ACTIF:
 		modeManuelActif = True if str(msg.payload).find('1') != -1 else False
-		#print(modeManuelActif)
+
 	elif topic == MQTT_TOPIC_COMMANDES_AUTO and not modeManuelActif and not arretUrgenceActif:
 		OpenCR.sendToOpenCR(str(msg.payload))
+
 	elif topic == MQTT_TOPIC_COMMANDE_MANUEL and modeManuelActif and not arretUrgenceActif:
 		OpenCR.sendToOpenCR(str(msg.payload))
+
+def on_disconnect(self, client, userdata, flags):
+	print('Connexion au serveur perdue. Tentative de reconnexion en cours')
 # ----------------------------------------------------------------------------
 # main 
 
@@ -58,6 +62,7 @@ def main():
 	mqtt_client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
 	mqtt_client.on_connect = on_connect
 	mqtt_client.on_message = on_message
+	mqtt_client.on_disconnect = on_disconnect
     
 	mqtt_client.connect_async(host=MQTT_ADDRESS, port=1883)
 	mqtt_client.loop_forever()

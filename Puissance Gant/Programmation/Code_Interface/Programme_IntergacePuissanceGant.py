@@ -55,12 +55,16 @@ def button_ModeManuel():
         window.LineEdit_ConsoleManuel.setReadOnly(False)
         window.LineEdit_ConsoleManuel.clear()
         window.LineEdit_ConsoleManuel.setPlaceholderText("Écrire une commande ici")
+
+        window.commInterface.envoyerManuelActif(True)
     else:
         window.Text_EtatDuRobot.setText("Mode automatique activé")
 
         window.LineEdit_ConsoleManuel.setReadOnly(True)
         window.LineEdit_ConsoleManuel.clear()
         window.LineEdit_ConsoleManuel.setPlaceholderText("Mode automatique activé, console bloquée")
+
+        window.commInterface.envoyerManuelActif(False)
 
 
 def button_ArretUrgence():
