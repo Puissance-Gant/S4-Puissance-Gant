@@ -47,6 +47,7 @@ class CommInterface(QThread):
         print('Connected with result code ' + str(rc))
         client.subscribe(self.MQTT_TOPIC_COMMANDE, 1)
         client.subscribe(self.MQTT_TOPIC_CALIB, 1)
+        client.subscribe(self.MQTT_TOPIC_PUISSANCE, 1)
 
         self.msgConnexion.emit(True)
 
@@ -58,22 +59,21 @@ class CommInterface(QThread):
         # print(str(msg.topic))
         match msg.topic:
             case self.MQTT_TOPIC_COMMANDE:
-                #if msg.topic == self.MQTT_TOPIC_COMMANDE:  # Message contenant la commande de l'ESP32
                 self.msgCommandeAuto.emit(str(msg.payload))
                 delai = f"{1000*(time.time() - self.delaiCommandeAuto):.1f}"
                 self.msgDelaiCommandeAuto.emit(delai)
+                self.delaiCommandeAuto = time.time()
 
             case self.MQTT_TOPIC_CALIB:
                 print(msg.payload)
 
             case self.MQTT_TOPIC_PUISSANCE:
-                self.valEnergie.emit(int(1000 * (time.time() - self.delaiCommandeAuto)))
-                self.delaiCommandeAuto = time.time()
+                print(msg.payload)
+                self.valEnergie.emit(int(msg.payload))
 
             case _:
-                print('Autre topic')
-        #elif mst.topif =
-        mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
+                return
+        # mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
 
     def envoyerCommandeManuelle(self, commande):
         msg = '<' + str(commande) + '>'

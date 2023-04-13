@@ -13,7 +13,7 @@ anciennePosB = int(0)
 anciennePosC = int(0)
 anciennePosD = int(0)
 anciennePosE = int(0)
-CHANGEMENT_MIN = 5
+CHANGEMENT_MIN = 5 #Déplacement nécessaire (%) pour faire bouger le moteur
 
 #========================
 
@@ -37,10 +37,10 @@ def sendToOpenCR(msg):
     # Cela permet d'optimiser la taille des messages à envoyer
     if any(c in msg for c in 'ABCD'):
         msg = verifierPosMoteurs(msg)
-        print(msg)
         #print("stringToSend = " + stringToSend)
-
-    serialPortOpenCR.write(msg.encode('utf-8')) # encode needed for Python3
+    if msg != "<>" :
+        print(msg)
+        serialPortOpenCR.write(msg.encode('utf-8')) # encode needed for Python3
     #print("taille du string : " + str(len(stringWithMarkers.encode('utf-8'))))
 
 #========================
@@ -114,35 +114,3 @@ def recvFromOpenCR():
         return dataBuf
     else:
         return "XXX" 
-
-
-# setupSerialOpenCR(256000, "COM10")
-
-# count = 0
-# prevTime = time.time()
-# newData = False
-
-# valeur = 180
-# increment = 10
-# tempsDernierMsg = time.time()
-# tempsChangement = time.time()
-# while True:
-#     # Envoyer un message à l'OpenCR
-#     if time.time() - prevTime > 0.1:
-#         newData = True
-#         if valeur > (360-abs(increment)) or valeur < abs(increment):
-#             increment = -increment
-#             print("Changement de sens")
-#             tempsChangement = time.time()
-#             sendToOpenCR("F")
-#         valeur = valeur + increment
-#         strValeur = str(valeur)
-#         sendToOpenCR(strValeur + "C" + strValeur + "D" + strValeur + "E")
-#         #sendToOpenCR(strValeur + "E")
-#         prevTime = time.time()
-
-
-#     # Recevoir le message de l'OpenCR : faire régulièrement (~chaque 0.1s)
-#     openCRReply = recvFromOpenCR()
-#     if not (openCRReply == 'XXX'):
-#         print ("openCr : " + openCRReply)

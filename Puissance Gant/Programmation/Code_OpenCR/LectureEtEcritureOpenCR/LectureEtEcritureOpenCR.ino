@@ -35,11 +35,20 @@ void setup() {
 
 //===============
 void loop() {
-    
+    static String puissance = "";
+    static uint32_t tempsPrec = millis();
     //static int i = 0;
     //static const int NB_MSG_RECU_AVANT_ENVOI = 100;
 
     recvWithStartEndMarkers();
+    // À chaque fois qu'on reçoit un nouveau message, vérifier pour envoyer la puissance
+    if(millis() - tempsPrec > 500) 
+    {
+        tempsPrec = millis();
+        puissance = getPuissanceMoteurs();
+        replyToPython(puissance);
+        //puissance = "";
+    }
     //replyToPython("");
 
     // Envoyer la puissance consommée chaque 1000 ms
