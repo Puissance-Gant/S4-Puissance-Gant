@@ -68,8 +68,8 @@ class CommInterface(QThread):
                 print(msg.payload)
 
             case self.MQTT_TOPIC_PUISSANCE:
-                print(msg.payload)
-                self.valEnergie.emit(int(msg.payload))
+                #print(msg.payload)
+                self.valEnergie.emit(abs(int(msg.payload)))
 
             case _:
                 return

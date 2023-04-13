@@ -39,7 +39,7 @@ def sendToOpenCR(msg):
         msg = verifierPosMoteurs(msg)
         #print("stringToSend = " + stringToSend)
     if msg != "<>" :
-        print(msg)
+        #print(msg)
         serialPortOpenCR.write(msg.encode('utf-8')) # encode needed for Python3
     #print("taille du string : " + str(len(stringWithMarkers.encode('utf-8'))))
 

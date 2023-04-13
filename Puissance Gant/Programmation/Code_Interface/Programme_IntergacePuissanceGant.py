@@ -1,5 +1,7 @@
 import os
 import sys
+import time
+
 import pyqtgraph
 from PyQt5 import QtWidgets
 
@@ -33,6 +35,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.LineEdit_ConsoleManuel.returnPressed.connect(consoleManuel_EnvoyerCommande)
         self.Button_ArretUrgence.clicked.connect(button_ArretUrgence)
         self.Button_ModeManuel.clicked.connect(button_ModeManuel)
+        self.Button_Demo1.clicked.connect(button_demo1)
+        self.Button_Demo2.clicked.connect(button_demo2)
 
     def setupPlot(self):
         tailleValEnergieTableau = 20
@@ -179,6 +183,38 @@ def plot_Energie(val):
     window.Plot_Energie.clear()
     window.Plot_Energie.plot(window.valEnergieTableau, pen=pyqtgraph.mkPen('k'))
 
+# Démonstration des différentes positions de la main
+def button_demo1():
+    if window.Button_ModeManuel.isChecked():
+        window.Text_EtatDuRobot.setText("Démonstration du mouvement de la main")
+
+        window.LineEdit_ConsoleManuel.setReadOnly(True)
+        window.LineEdit_ConsoleManuel.clear()
+        window.LineEdit_ConsoleManuel.setPlaceholderText("")
+
+        # Ouvrir la main
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+        time.sleep(3)
+        # Un doigt à la fois
+        tempsSleep = 1.5
+        window.commInterface.envoyerCommandeManuelle("100A0B0C0D")
+        time.sleep(tempsSleep)
+        window.commInterface.envoyerCommandeManuelle("0A100B0C0D")
+        time.sleep(tempsSleep)
+        window.commInterface.envoyerCommandeManuelle("0A0B100C0D")
+        time.sleep(tempsSleep)
+        window.commInterface.envoyerCommandeManuelle("0A0B0C100D")
+        time.sleep(tempsSleep)
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+
+# Démonstration de prise d'objet (ex. une banane)
+def button_demo2():
+    if window.Button_ModeManuel.isChecked():
+        window.Text_EtatDuRobot.setText("Démonstration de préhension d'objet")
+
+        window.LineEdit_ConsoleManuel.setReadOnly(True)
+        window.LineEdit_ConsoleManuel.clear()
+        window.LineEdit_ConsoleManuel.setPlaceholderText("")
 
 # endregion
 

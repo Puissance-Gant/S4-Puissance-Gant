@@ -861,11 +861,61 @@ p, li { white-space: pre-wrap; }
       <string>Écrire une commande ici</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="Button_Demo1">
+     <property name="geometry">
+      <rect>
+       <x>117</x>
+       <y>78</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Démo 1</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Button_Demo2">
+     <property name="geometry">
+      <rect>
+       <x>117</x>
+       <y>140</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Démo 2</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
     <zorder>Button_ModeManuel</zorder>
     <zorder>Text_EtatDuRobot</zorder>
     <zorder>layoutWidget</zorder>
     <zorder>LineEdit_ConsoleManuel</zorder>
     <zorder>Line_SeparationConsole</zorder>
+    <zorder>Button_Demo1</zorder>
+    <zorder>Button_Demo2</zorder>
    </widget>
    <zorder>Frame_Manuel</zorder>
    <zorder>Frame_Boutons</zorder>
