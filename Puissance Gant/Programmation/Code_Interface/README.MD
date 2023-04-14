@@ -21,6 +21,8 @@ Le fichier *Programme_InterfacePuissanceGant* contient la logique des interactio
 
 L'interface contient plusieurs sections, notamment pour afficher la position des moteurs, l'état de la communication, le panneau du mode manuel ainsi que la consommation énergétique. Pour activer le serveur de communication MQTT, il faut appuyer sur le bouton à cet effet dans la section de communication au bas de l'interface. Il est aussi possible de reconnecter le client de l'interface à partir de l'interface.
 
+Il est important de noter que l'interface du projet Puissance Gant requiert la [connexion au serveur MQTT](https://github.com/Puissance-Gant/S4-Puissance-Gant/tree/main/Puissance%20Gant/Programmation/Code_Communication). Sans cela, lancer le fichier créera une multitude d'erreur.
+
 
 # Notes temporaires
 Les objets de l'interface ont un préfixe indiquant leur type et un nom indiquant leur utilité (ex. Texte_AngleIndex est l'objet de boîte de texte qui sert à indiquer l'angle du moteur de l'index)

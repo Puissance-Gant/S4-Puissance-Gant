@@ -23,6 +23,7 @@ boolean newData = false;
 int tempsDepart = millis();
 
 void recvWithStartEndMarkers() {
+
     static boolean recvInProgress = false;
     static byte ndx = 0;
     static char startMarker = '<';
@@ -48,7 +49,6 @@ void recvWithStartEndMarkers() {
                     {
                         moteurs[POUCE].posGoalActu = nouvelleDonnee.toFloat();
                         changerPosMoteurs(moteurs[POUCE]);
-                        //Serial.println("<" + nouvelleDonnee + "A" + ">");
                         nouvelleDonnee = "";
                         break;
                     }
@@ -56,7 +56,6 @@ void recvWithStartEndMarkers() {
                     {
                         moteurs[INDEX].posGoalActu = nouvelleDonnee.toFloat();
                         changerPosMoteurs(moteurs[INDEX]);
-                        //Serial.println("<" + String(nouvelleDonnee.toInt()) + ">");
                         nouvelleDonnee = "";
                         break;
                     }
@@ -64,23 +63,22 @@ void recvWithStartEndMarkers() {
                     {
                         moteurs[MAJEUR].posGoalActu = nouvelleDonnee.toFloat();
                         changerPosMoteurs(moteurs[MAJEUR]);
-                        //Serial.println("<" + nouvelleDonnee + "C" + ">");
                         nouvelleDonnee = "";
                         break;
                     }
                     case 'D': //Poignet en inclinaison
                     {
-                        moteurs[POIGNET_INCL].posGoalActu = nouvelleDonnee.toFloat();
-                        changerPosMoteurs(moteurs[POIGNET_INCL]);
-                        //Serial.println("<" + nouvelleDonnee + "D" + ">");
+                        moteurs[POIGNET].posGoalActu = nouvelleDonnee.toFloat();
+                        changerPosMoteurs(moteurs[POIGNET]);
                         nouvelleDonnee = "";
                         break;
                     }
-                    case 'E': //Poignet en rotation
+                    case 'U': //Poignet en inclinaison
                     {
-                        moteurs[POIGNET_ROT].posGoalActu = nouvelleDonnee.toFloat();
-                        changerPosMoteurs(moteurs[POIGNET_ROT]);
-                        //Serial.println("<" + nouvelleDonnee + "E" + ">");
+                        if(nouvelleDonnee == "1")
+                            arretUrgence(true);
+                        else
+                            arretUrgence(false);
                         nouvelleDonnee = "";
                         break;
                     }
@@ -96,6 +94,8 @@ void recvWithStartEndMarkers() {
                 recvInProgress = false;
                 ndx = 0;
                 newData = true;
+
+                
             }
         }
 
@@ -103,6 +103,7 @@ void recvWithStartEndMarkers() {
             recvInProgress = true;
         }
     }
+    
 }
 
 /*Envoyer un message périodique à python
