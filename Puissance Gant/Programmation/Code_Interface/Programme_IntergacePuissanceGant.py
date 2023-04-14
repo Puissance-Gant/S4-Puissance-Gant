@@ -183,6 +183,11 @@ def plot_Energie(val):
     window.Plot_Energie.clear()
     window.Plot_Energie.plot(window.valEnergieTableau, pen=pyqtgraph.mkPen('k'))
 
+# Attendre un certain nombre de secondes tout en exécutant l'interface
+def attendre(sec):
+    tempsActu = time.time()
+    while time.time() - sec < tempsActu: app.processEvents()
+
 # Démonstration des différentes positions de la main
 def button_demo1():
     if window.Button_ModeManuel.isChecked():
@@ -194,18 +199,55 @@ def button_demo1():
 
         # Ouvrir la main
         window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
-        time.sleep(3)
+        attendre(3)
         # Un doigt à la fois
-        tempsSleep = 1.5
+        window.Text_EtatDuRobot.setText("Un doigt à la fois")
+        tempsSommeil = 1.5
         window.commInterface.envoyerCommandeManuelle("100A0B0C0D")
-        time.sleep(tempsSleep)
+        attendre(tempsSommeil)
         window.commInterface.envoyerCommandeManuelle("0A100B0C0D")
-        time.sleep(tempsSleep)
+        attendre(tempsSommeil)
         window.commInterface.envoyerCommandeManuelle("0A0B100C0D")
-        time.sleep(tempsSleep)
+        attendre(tempsSommeil)
         window.commInterface.envoyerCommandeManuelle("0A0B0C100D")
-        time.sleep(tempsSleep)
+        attendre(tempsSommeil)
         window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+        attendre(tempsSommeil)
+
+        # Position #1 : signe "ok" plus pencher la main
+        window.Text_EtatDuRobot.setText("Signe OK")
+        window.commInterface.envoyerCommandeManuelle("100A100B0C0D")
+        attendre(2*tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+
+        time.sleep(tempsSommeil)
+        # Position 2 : baisser et vague
+        window.Text_EtatDuRobot.setText("Baisser + vague")
+        tempsSommeil = 0.8
+        window.commInterface.envoyerCommandeManuelle("0A0B0C75D")
+        attendre(2*tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("100A0B0C75D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A100B0C75D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A0B90C75D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A100B0C75D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("100A0B0C75D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+
+        window.Text_EtatDuRobot.setText("Démonstration #1 terminée")
+
+        attendre(2)
+        window.LineEdit_ConsoleManuel.setReadOnly(False)
+        window.LineEdit_ConsoleManuel.clear()
+        window.LineEdit_ConsoleManuel.setPlaceholderText("Écrire une commande ici")
+
+        window.Text_EtatDuRobot.setText("Mode manuel activé \nEntrer le pourcentage du moteur choisi \n\nExemple : 50")
+
+
 
 # Démonstration de prise d'objet (ex. une banane)
 def button_demo2():
@@ -215,6 +257,26 @@ def button_demo2():
         window.LineEdit_ConsoleManuel.setReadOnly(True)
         window.LineEdit_ConsoleManuel.clear()
         window.LineEdit_ConsoleManuel.setPlaceholderText("")
+
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+        tempsSommeil = 3
+        attendre(0.5*tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("100A100B100C0D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("100A100B100C70D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("100A100B100C0D")
+        attendre(tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+
+        window.Text_EtatDuRobot.setText("Démonstration #2 terminée")
+
+        attendre(tempsSommeil)
+        window.LineEdit_ConsoleManuel.setReadOnly(False)
+        window.LineEdit_ConsoleManuel.clear()
+        window.LineEdit_ConsoleManuel.setPlaceholderText("Écrire une commande ici")
+
+        window.Text_EtatDuRobot.setText("Mode manuel activé \nEntrer le pourcentage du moteur choisi \n\nExemple : 50")
 
 # endregion
 
