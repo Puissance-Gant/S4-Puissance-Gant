@@ -13,7 +13,7 @@ anciennePosB = int(0)
 anciennePosC = int(0)
 anciennePosD = int(0)
 anciennePosE = int(0)
-CHANGEMENT_MIN = 5 #Déplacement nécessaire (%) pour faire bouger le moteur
+CHANGEMENT_MIN = 3 #Déplacement nécessaire (%) pour faire bouger le moteur
 
 #========================
 

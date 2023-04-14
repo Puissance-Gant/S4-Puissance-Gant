@@ -258,12 +258,12 @@ def button_demo2():
         window.LineEdit_ConsoleManuel.clear()
         window.LineEdit_ConsoleManuel.setPlaceholderText("")
 
-        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
         tempsSommeil = 3
-        attendre(0.5*tempsSommeil)
+        window.commInterface.envoyerCommandeManuelle("0A0B0C0D")
+        attendre(tempsSommeil)
         window.commInterface.envoyerCommandeManuelle("100A100B100C0D")
         attendre(tempsSommeil)
-        window.commInterface.envoyerCommandeManuelle("100A100B100C70D")
+        window.commInterface.envoyerCommandeManuelle("100A100B100C50D")
         attendre(tempsSommeil)
         window.commInterface.envoyerCommandeManuelle("100A100B100C0D")
         attendre(tempsSommeil)

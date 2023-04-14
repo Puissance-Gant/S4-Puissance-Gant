@@ -20,7 +20,7 @@ void setup() {
     //Instanciation des moteurs
     moteurs[POUCE] = {31, 0, 100, 220, 63};
     moteurs[INDEX] = {36, 0, 100, 330, 130};
-    moteurs[MAJEUR] = {37, 0, 100, 111, 325};
+    moteurs[MAJEUR] = {37, 0, 100, 21, 235};
     moteurs[POIGNET] = {17, 0, 50, 105, 55};
 
     //Setup des moteurs
@@ -42,14 +42,15 @@ void loop() {
 
     recvWithStartEndMarkers();
     // À chaque fois qu'on reçoit un nouveau message, vérifier pour envoyer la puissance
-    if(millis() - tempsPrec > 500) 
-    {
-        tempsPrec = millis();
-        puissance = getPuissanceMoteurs();
-        replyToPython(puissance);
+    //if(millis() - tempsPrec > 1000) 
+    //{
+    //    tempsPrec = millis();
+    //    puissance = getPuissanceMoteurs();
+    //    replyToPython(puissance);
         //puissance = "";
-    }
-    //replyToPython("");
+    //}
+    
+    replyToPython("");
 
     // Envoyer la puissance consommée chaque 1000 ms
 
