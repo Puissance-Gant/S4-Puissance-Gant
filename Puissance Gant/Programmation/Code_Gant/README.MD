@@ -10,3 +10,5 @@ L'acquistion de donnée ce fait avec l'aide d'un gant et de résistance coulissa
 ## Communication
 
 La figure ci-dessous représente la communication entre les différente 
+![image](https://user-images.githubusercontent.com/92071066/232347092-d35c765d-58a3-484b-bf98-daa516f1bd7c.png)
+
