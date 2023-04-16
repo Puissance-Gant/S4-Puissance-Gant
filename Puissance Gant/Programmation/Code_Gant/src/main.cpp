@@ -15,24 +15,20 @@ String serialData; // String qui est envoyé en Serial au pi4 pour êytre lut et
 struct Hand
 {
     static const uint8_t DOIGTS = 3; // Max number of fingers with flexs
-    static const uint8_t AXIS = 3;   // Number of MPU9250's axis data to send
 
     int pin[DOIGTS] = {POUCE, INDEX, MAJEUR};
-    uint16_t fingers[DOIGTS] = {0, 0, 0}; // Order for the right hand: {POUCE INDEX MAJEUR}
-    float max[DOIGTS] = {3072, 4096, 4096};     // Valeur maximum des resistances
-    float min[DOIGTS] = {1024, 0, 0};     // Zero
+    uint16_t fingers[DOIGTS] = {0, 0, 0};       // Order for the right hand: {POUCE INDEX MAJEUR}
+    float max[DOIGTS] = {4096, 4096, 4096};     // Valeur maximum des resistances
+    float min[DOIGTS] = {0, 0, 0};              // Valeur minimum des resistances
 
-
-    float imu[AXIS] = {0, 0, 0}; // Order for data: {LINEAR_X LINEAR_Y ROTATION_Z}
-
-    String CALIBRATION = "LOW";
+    int etape = 0;
 } hand = {};
 
 
 // Wifi
 // Il est important de noter que le wifi est utilisé en connection en point d'accès avec un ordinateur portable ou un cellulaire
-const char* ssid = "ludo";                // Nom du réseau personnelle
-const char* wifi_password = "puissance";           // Mot de passe du réseau
+const char* ssid = "ludo";                          // Nom du réseau personnelle
+const char* wifi_password = "puissance";            // Mot de passe du réseau
 
 // MQTT
 // mosquitto est le mqtt broker utiliser du au fait qu'il est gratuit et open-source
@@ -55,17 +51,12 @@ void setupFlexSensors()
     pinMode(POUCE, INPUT);
     pinMode(INDEX, INPUT);
     pinMode(MAJEUR, INPUT);
-}
-
-// Parametre pour l'accelerometre
-void setupIMUSensor()
-{
-    // PLUS TARD
+    pinMode(BOUTON, INPUT);
 }
 
 // Connexion au Wifi
 void connect_WIFI(){
-    Serial.print("Connecting to ");
+    Serial.print("Connection à ");
     Serial.println(ssid);
 
     // Connect to the WiFi
@@ -78,17 +69,18 @@ void connect_WIFI(){
     }
 
     Serial.println(".");
-    Serial.println("Wifi connected");
+    Serial.println("Connecter au Wifi");
 }
 
+
+// Connexion au au serveur MQTT
 void connect_MQTT(){
-    // Debugging - Output the IP Address of the ESP8266
-    Serial.println("WiFi connected");
-    Serial.print("IP address: ");
+    Serial.println("Connecter au Wifi");
+    Serial.print("Adresse IP: ");
     Serial.println(WiFi.localIP());
 
     if (client.connect(clientID, mqtt_username, mqtt_password)) {
-     Serial.println("Connected to MQTT Broker!");
+     Serial.println("Connecter au serveur MQTT!");
     }
     else {
         Serial.println("Connection to MQTT Broker failed...");
@@ -102,7 +94,6 @@ void flexSensorsData()
     for (int finger = 0; finger < hand.DOIGTS; finger++)
     {
         int val = analogRead(hand.pin[finger]);
-
         if  (val >= hand.max[finger])
         {
             hand.fingers[finger] = 100; 
@@ -119,14 +110,104 @@ void flexSensorsData()
     }
 }
 
-
 void calibration()
 {
-    Serial.println(digitalRead(BOUTON)); 
+    delay(500);
+
+    Serial.println("Etape 1");
+
+    /*if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+        // Serial.println(String(hand.etape));
+    }
+
+    else {
+        //Serial.println("Resistance failed to send. Reconnecting to MQTT Broker and trying again");
+        client.connect(clientID, mqtt_username, mqtt_password);
+        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+        client.publish(calibration_topic, String(hand.etape).c_str());
+    }*/
+
+    while(hand.etape == 1)
+    {
+        if (digitalRead(BOUTON) == 1)
+        {
+            for (int finger = 0; finger < hand.DOIGTS; finger++)
+            {
+                hand.min[finger] = analogRead(hand.pin[finger]);
+            }
+            hand.etape = 2; 
+        } 
+    }
+
+    /*if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+        // Serial.println(String(hand.etape));
+    }
+
+    else {
+        //Serial.println("Resistance failed to send. Reconnecting to MQTT Broker and trying again");
+        client.connect(clientID, mqtt_username, mqtt_password);
+        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+        client.publish(calibration_topic, String(hand.etape).c_str());
+    }*/
+
+    delay(500);
+    hand.etape = 2;
+    Serial.println("Etape 2");
+
+    while(hand.etape == 2)
+    {
+        if (digitalRead(BOUTON) == 1)
+        {
+            for (int finger = 1; finger < hand.DOIGTS; finger++)
+            {
+                hand.max[finger] = analogRead(hand.pin[finger]);
+            }
+            hand.etape = 3; 
+        } 
+    }
+    
+    /*if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+        // Serial.println(String(hand.etape));
+    }
+
+    else {
+        //Serial.println("Resistance failed to send. Reconnecting to MQTT Broker and trying again");
+        client.connect(clientID, mqtt_username, mqtt_password);
+        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+        client.publish(calibration_topic, String(hand.etape).c_str());
+    }*/
+
+    delay(500);
+    hand.etape = 3;
+    Serial.println("Etape 3");
+
+    while(hand.etape == 3)
+    {
+        if (digitalRead(BOUTON) == 1)
+        {
+            hand.max[0] = analogRead(hand.pin[0]);
+            hand.etape = 0; 
+        } 
+    }
+
+    delay(500);
+
+    if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+        // Serial.println(String(hand.etape));
+    }
+
+    else {
+        Serial.println("Resistance failed to send. Reconnecting to MQTT Broker and trying again");
+        client.connect(clientID, mqtt_username, mqtt_password);
+        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+        client.publish(calibration_topic, String(hand.etape).c_str());
+    }
+
+
 }
 
 /**
- * Formats the serial communication protocol to send it as a string:
+ * Formats pour la communication Seriel envoyé en String:
  * pouceAindexBmajeurC
  */
 void stringToSend()
@@ -163,15 +244,25 @@ void setup()
 {
     // Communication setup: 
     Serial.begin(115200);
-    pinMode(BOUTON, INPUT);
 
     delay(1000);
     // Sensors and UI setup:
-    setupIMUSensor();
     setupFlexSensors();
 
+    /*
     connect_WIFI();
     connect_MQTT();
+
+    if (client.publish(calibration_topic, String("-1").c_str())) {
+        //Serial.println("Reset sent!");
+    }
+    else {
+        //Serial.println("Reset failed to send. Reconnecting to MQTT Broker and trying again");
+        client.connect(clientID, mqtt_username, mqtt_password);
+        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+        client.publish(calibration_topic, String("-1").c_str());
+    }
+    */
 }
 
 void loop()
@@ -185,6 +276,28 @@ void loop()
     stringToSend();
     Serial.println(String(serialData));
 
+    
+    if (digitalRead(BOUTON) == 1)
+    {
+        hand.etape = 1;
+        if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+            // Serial.println(String(hand.etape));
+        }
+
+        else {
+            //Serial.println("Resistance failed to send. Reconnecting to MQTT Broker and trying again");
+            client.connect(clientID, mqtt_username, mqtt_password);
+            delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
+            client.publish(calibration_topic, String(hand.etape).c_str());
+        }
+        calibration();
+        
+        Serial.println(String(hand.min[0]) + ", " + String(hand.min[1]) + ", " + String(hand.min[2]));
+        Serial.println(String(hand.max[0]) + ", " + String(hand.max[1]) + ", " + String(hand.max[2]));
+    }
+    
+
+    /*
     // resistance_topic
     if (client.publish(resistance_topic, String(serialData).c_str())) {
         // Serial.println("resistance sent!");
@@ -196,19 +309,8 @@ void loop()
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(resistance_topic, String(serialData).c_str());
     }
+    */
 
-    // reset_topic
-
-    if (client.publish(calibration_topic, String("Je suis un bouton").c_str())) {
-        //Serial.println("Reset sent!");
-    }
-
-    else {
-        //Serial.println("Reset failed to send. Reconnecting to MQTT Broker and trying again");
-        client.connect(clientID, mqtt_username, mqtt_password);
-        delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
-        client.publish(calibration_topic, String("Je suis un bouton").c_str());
-    }
 
     delay(150);
 }
