@@ -14,14 +14,14 @@ String serialData; // String qui est envoyé en Serial au pi4 pour êytre lut et
 /// Structure qui contient toute les information de la main
 struct Hand
 {
-    static const uint8_t DOIGTS = 3; // Max number of fingers with flexs
+    static const uint8_t DOIGTS = 3;            // Nombre de doigt sur le gant 
 
     int pin[DOIGTS] = {POUCE, INDEX, MAJEUR};
     uint16_t fingers[DOIGTS] = {0, 0, 0};       // Order for the right hand: {POUCE INDEX MAJEUR}
     float max[DOIGTS] = {4096, 4096, 4096};     // Valeur maximum des resistances
     float min[DOIGTS] = {0, 0, 0};              // Valeur minimum des resistances
 
-    int etape = 0;
+    int etape = 0;                              // État de la calibration 
 } hand = {};
 
 
@@ -51,7 +51,7 @@ void setupFlexSensors()
     pinMode(POUCE, INPUT);
     pinMode(INDEX, INPUT);
     pinMode(MAJEUR, INPUT);
-    pinMode(BOUTON, INPUT);
+    // pinMode(BOUTON, INPUT);
 }
 
 // Connexion au Wifi
@@ -72,7 +72,6 @@ void connect_WIFI(){
     Serial.println("Connecter au Wifi");
 }
 
-
 // Connexion au au serveur MQTT
 void connect_MQTT(){
     Serial.println("Connecter au Wifi");
@@ -86,9 +85,10 @@ void connect_MQTT(){
         Serial.println("Connection to MQTT Broker failed...");
     }
 }
-/*-------------------------------------------------- loop functions --------------------------------------------------*/
 
-/// Gathers flex sensors data
+
+/*-------------------------------------------------- loop functions --------------------------------------------------*/
+// Prend la valeur des résistances
 void flexSensorsData()
 {
     for (int finger = 0; finger < hand.DOIGTS; finger++)
@@ -110,13 +110,15 @@ void flexSensorsData()
     }
 }
 
+// Cette fonction correspond au processus de calibration du gant. Elle est activé lorsque le bouton est appuyé. 
+/*
 void calibration()
 {
     delay(500);
 
     Serial.println("Etape 1");
 
-    /*if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+    if (client.publish(calibration_topic, String(hand.etape).c_str())) {
         // Serial.println(String(hand.etape));
     }
 
@@ -125,7 +127,7 @@ void calibration()
         client.connect(clientID, mqtt_username, mqtt_password);
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(calibration_topic, String(hand.etape).c_str());
-    }*/
+    }
 
     while(hand.etape == 1)
     {
@@ -139,7 +141,7 @@ void calibration()
         } 
     }
 
-    /*if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+    if (client.publish(calibration_topic, String(hand.etape).c_str())) {
         // Serial.println(String(hand.etape));
     }
 
@@ -148,7 +150,7 @@ void calibration()
         client.connect(clientID, mqtt_username, mqtt_password);
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(calibration_topic, String(hand.etape).c_str());
-    }*/
+    }
 
     delay(500);
     hand.etape = 2;
@@ -166,7 +168,7 @@ void calibration()
         } 
     }
     
-    /*if (client.publish(calibration_topic, String(hand.etape).c_str())) {
+    if (client.publish(calibration_topic, String(hand.etape).c_str())) {
         // Serial.println(String(hand.etape));
     }
 
@@ -175,7 +177,7 @@ void calibration()
         client.connect(clientID, mqtt_username, mqtt_password);
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(calibration_topic, String(hand.etape).c_str());
-    }*/
+    }
 
     delay(500);
     hand.etape = 3;
@@ -202,9 +204,9 @@ void calibration()
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(calibration_topic, String(hand.etape).c_str());
     }
-
-
 }
+*/
+
 
 /**
  * Formats pour la communication Seriel envoyé en String:
@@ -244,15 +246,21 @@ void setup()
 {
     // Communication setup: 
     Serial.begin(115200);
-
     delay(1000);
-    // Sensors and UI setup:
+
+    // Setup pour les resistance et le bouton (si nécessaire)
     setupFlexSensors();
 
-    /*
+    // Connection 
     connect_WIFI();
     connect_MQTT();
 
+    // Initialisation de l'état de la calibration
+    // 0 == n'est pas en calibration 
+    // 1 == valeur minimum pour le pouce, l'index et le groupe de doigts
+    // 2 == valeur maximum pour l'index et le groupe de doigts
+    // 3 == valeur maximum pour le pouce
+    /*
     if (client.publish(calibration_topic, String("-1").c_str())) {
         //Serial.println("Reset sent!");
     }
@@ -276,7 +284,9 @@ void loop()
     stringToSend();
     Serial.println(String(serialData));
 
-    
+
+    // Cette partie de code permet d'avoir une calibration du gant à l'appuie d'un bouton
+    /*
     if (digitalRead(BOUTON) == 1)
     {
         hand.etape = 1;
@@ -295,9 +305,8 @@ void loop()
         Serial.println(String(hand.min[0]) + ", " + String(hand.min[1]) + ", " + String(hand.min[2]));
         Serial.println(String(hand.max[0]) + ", " + String(hand.max[1]) + ", " + String(hand.max[2]));
     }
-    
+    */
 
-    /*
     // resistance_topic
     if (client.publish(resistance_topic, String(serialData).c_str())) {
         // Serial.println("resistance sent!");
@@ -309,7 +318,6 @@ void loop()
         delay(10); // This delay ensures that client.publish doesn't clash with the client.connect call
         client.publish(resistance_topic, String(serialData).c_str());
     }
-    */
 
 
     delay(150);
