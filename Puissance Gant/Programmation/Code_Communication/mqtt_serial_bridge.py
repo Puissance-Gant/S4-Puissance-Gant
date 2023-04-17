@@ -149,3 +149,5 @@ while(True):
         print(f"Received from serial device: {input}")
         if client.is_connected():
             client.publish(topic=mqtt_topic, payload=input)
+
+            
