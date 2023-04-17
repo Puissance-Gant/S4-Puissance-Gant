@@ -76,7 +76,7 @@ void setupMoteurs(Moteur mot)
     dxl.setOperatingMode(mot.id, OP_POSITION);
     dxl.torqueOn(mot.id);
 
-    dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, 50);
-    changerPosMoteurs(mot);
+    dxl.writeControlTableItem(PROFILE_VELOCITY, mot.id, mot.vitActu);
+    //changerPosMoteurs(mot);
 }
 
