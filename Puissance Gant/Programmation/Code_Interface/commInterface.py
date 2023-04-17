@@ -8,7 +8,6 @@ class CommInterface(QThread):
     MQTT_USER = 'puissance'
     MQTT_PASSWORD = 'puissance'
     MQTT_TOPIC_COMMANDE = 'Eq7_PuissanceGant_S4/gant/commandes'
-    MQTT_TOPIC_CALIB = 'Eq7_PuissanceGant_S4/gant/calibration'
     MQTT_TOPIC_MANUEL_ACTIF = 'Eq7_PuissanceGant_S4/interface/manuel_actif'
     MQTT_TOPIC_MANUEL_COMMANDE = 'Eq7_PuissanceGant_S4/interface/commande'
     MQTT_TOPIC_ARRET_URGENCE_ACTIF = 'Eq7_PuissanceGant_S4/interface/arret_urgence_actif'
@@ -22,6 +21,8 @@ class CommInterface(QThread):
 
     # ----------------------------------------------------------------------------
     # Fonctions MQTT
+
+    # Initialiser la connexion au lancement du programme
     def __init__(self):
         QThread.__init__(self)
         print('MQTT to influxDB bridge')
@@ -35,14 +36,17 @@ class CommInterface(QThread):
         mqtt_client.on_disconnect = self.on_disconnect
         mqtt_client.on_message = self.on_message
 
+    # Lancer la connexion au serveur lorsqu'on démarre le Qthread
     def run(self):
         mqtt_client.connect_async(host=self.MQTT_ADDRESS, port=1883)
         mqtt_client.loop_forever()
 
+    # Arrêter la connexion lorsqu'on arrête le Qthread
     def kill(self):
         mqtt_client.disconnect()
         self.terminate()
 
+    # on_connect est appelé lorsque le serveur est atteint
     def on_connect(self, client, userdata, flags, rc):
         print('Connected with result code ' + str(rc))
         client.subscribe(self.MQTT_TOPIC_COMMANDE, 1)
@@ -51,21 +55,21 @@ class CommInterface(QThread):
 
         self.msgConnexion.emit(True)
 
+    # on_disconnect est appelé lorsque la connexion au serveur est perdue
     def on_disconnect(self, client, userdata, flags):
         print('Disconnected from broker')
         self.msgConnexion.emit(False)
 
+    # Recevoir un message du serveur
     def on_message(self, client, userdata, msg):
-        # print(str(msg.topic))
         match msg.topic:
+            # Recevoir un message de commande automatique
             case self.MQTT_TOPIC_COMMANDE:
                 self.msgCommandeAuto.emit(str(msg.payload))
+                # Noter le délai entre chaque message
                 delai = f"{1000*(time.time() - self.delaiCommandeAuto):.1f}"
                 self.msgDelaiCommandeAuto.emit(delai)
                 self.delaiCommandeAuto = time.time()
-
-            case self.MQTT_TOPIC_CALIB:
-                print(msg.payload)
 
             case self.MQTT_TOPIC_PUISSANCE:
                 #print(msg.payload)
@@ -75,29 +79,24 @@ class CommInterface(QThread):
                 return
         # mqtt_client.publish('Eq7_PuissanceGant_S4/OpenCR/test', str("BENIS"), qos=0, retain=False)
 
+    # Envoyer une commande manuelle au serveur
     def envoyerCommandeManuelle(self, commande):
         msg = '<' + str(commande) + '>'
         mqtt_client.publish(self.MQTT_TOPIC_MANUEL_COMMANDE, msg, qos=1, retain=False)
 
+    # Indiquer au serveur si le mode manuel est activé
     def envoyerManuelActif(self, actif):
         if actif:
             msg = '1'
         else:
             msg = '0'
         mqtt_client.publish(self.MQTT_TOPIC_MANUEL_ACTIF, msg, qos=2, retain=False)
-    # Indiquer au serveur que l'arrêt d'urgence est activé
+
+    # Indiquer au serveur si l'arrêt d'urgence est activé
     def envoyerArretUrgenceActif(self, actif: bool):
         if actif:
             msg = '1'
         else:
             msg = '0'
         mqtt_client.publish(self.MQTT_TOPIC_ARRET_URGENCE_ACTIF, msg, qos=2, retain=False)
-    # ----------------------------------------------------------------------------
-    # main
 
-
-
-
-#    if __name__ == '__main__':
-#        print('MQTT to influxDB bridge')
-#        main()

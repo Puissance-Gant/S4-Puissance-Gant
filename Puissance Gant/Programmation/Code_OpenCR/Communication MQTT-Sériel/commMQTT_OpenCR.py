@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-import LectureEcritureOpenCR as OpenCR
+import LectureEcritureSerielOpenCR as OpenCR
 
 MQTT_ADDRESS = "192.168.137.254"
 MQTT_USER = 'puissance'

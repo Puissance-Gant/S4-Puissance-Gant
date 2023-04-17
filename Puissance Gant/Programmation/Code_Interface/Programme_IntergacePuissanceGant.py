@@ -23,6 +23,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tabTempsCommande = 5*[0]
         self.indiceTempsCommande = 0
 
+        # Lancer la communication MQTT de l'interface
         self.commInterface = CommInterface()
         self.commInterface.start()
         self.commInterface.msgCommandeAuto.connect(text_CommandeMoteurs)
@@ -32,12 +33,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.Label_CrochetVert.setVisible(False)
 
+        # Connecter les composantes de l'interface aux fonctions appropriées
         self.LineEdit_ConsoleManuel.returnPressed.connect(consoleManuel_EnvoyerCommande)
         self.Button_ArretUrgence.clicked.connect(button_ArretUrgence)
         self.Button_ModeManuel.clicked.connect(button_ModeManuel)
         self.Button_Demo1.clicked.connect(button_demo1)
         self.Button_Demo2.clicked.connect(button_demo2)
 
+    # Initialiser le graphique de consommation d'énergie
     def setupPlot(self):
         tailleValEnergieTableau = 20
         self.valEnergieTableau = tailleValEnergieTableau * [0]
@@ -48,11 +51,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 # region code de boutons
+
+# fonction appelée lorsque le bouton d'activation du mode manuel est cliqué
 def button_ModeManuel():
-    # ===================
-    # Ajouter le changement de vitesse pour avoir tous les moteurs à 50%
-    # Possiblement fait avec un tableau de valeurs de position des moteurs envoyé à chaque
-    # ===================
     if window.Button_ModeManuel.isChecked():
         window.Text_EtatDuRobot.setText("Mode manuel activé \nEntrer le pourcentage du moteur choisi \n\nExemple : 50")
 
@@ -70,7 +71,7 @@ def button_ModeManuel():
 
         window.commInterface.envoyerManuelActif(False)
 
-
+# fonction appelée lorsque le bouton d'arrêt d'urgence est cliqué
 def button_ArretUrgence():
     if window.Button_ArretUrgence.isChecked():
         window.Text_EtatDuRobot.setText("Arrêt d'urgence activé." + "\n\n" + "Robot désactivé, moteurs bloqués.")
@@ -84,12 +85,9 @@ def button_ArretUrgence():
         button_ModeManuel()
         window.commInterface.envoyerArretUrgenceActif(False)
 
-
-
-
 # endregion
 
-#region code d'écriture de texte (lineEdit et textEdit)
+# region code d'écriture de texte (lineEdit et textEdit)
 
 # Envoyer une commande manuelle au robot selon le moteur sélectionné
 def envoyerCommandeManuelle(msg):
@@ -103,7 +101,7 @@ def envoyerCommandeManuelle(msg):
     elif boutonActif.__contains__('Majeur'):
         window.commInterface.envoyerCommandeManuelle(msg + 'C')
         window.Text_PourcentageMajeur.setText(msg + '%')
-    elif boutonActif.__contains__('Incl'):
+    elif boutonActif.__contains__('Incl'): # inclinaison du poignet
         window.commInterface.envoyerCommandeManuelle(msg + 'D')
         window.Text_PourcentageInclinaison.setText(msg + '%')
 
@@ -111,6 +109,7 @@ def envoyerCommandeManuelle(msg):
 def consoleManuel_EnvoyerCommande():
     val_entree = window.LineEdit_ConsoleManuel.text()
     texte = "Commande reçue : " + val_entree
+    # Vérifier que la valeur est un nombre entre 0 et 100
     try:
         valeur = int(val_entree)
         if valeur < 0 or valeur > 100:
@@ -177,16 +176,19 @@ def etatConnexionServeur(msg: bool):
 
 # region Code autre
 
+# Afficher les 20 dernières valeurs de puissance reçues. En faire l'intégrale donnerait l'énergie
 def plot_Energie(val):
     window.valEnergieTableau.pop(0)
     window.valEnergieTableau.append(val)
     window.Plot_Energie.clear()
     window.Plot_Energie.plot(window.valEnergieTableau, pen=pyqtgraph.mkPen('k'))
 
+
 # Attendre un certain nombre de secondes tout en exécutant l'interface
 def attendre(sec):
     tempsActu = time.time()
     while time.time() - sec < tempsActu: app.processEvents()
+
 
 # Démonstration des différentes positions de la main
 def button_demo1():
@@ -281,6 +283,7 @@ def button_demo2():
 # endregion
 
 
+# Démarrer l'interface
 app = QtWidgets.QApplication(sys.argv)
 window = MainWindow()
 
