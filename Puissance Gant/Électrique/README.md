@@ -27,5 +27,7 @@ La mesure de la position des doigts se fait par la lecture des diviseurs de tens
 
 ### Photos de montage complété
 Bien que rudimentaire, le montage illustré ci-contre sert de référence pour l'assemblage. À noter que les tiges des curseurs traversent le plafond du boitier dans une fente de la langueur du parcours du curseur et que les poteniomètres sont boulonnés par le haut.
+![gant_montage02](https://user-images.githubusercontent.com/106932488/232541479-90515e92-f242-44ab-a620-5a7b31f6410a.jpg)
 
-*insérer photo*
+![gant_montage01](https://user-images.githubusercontent.com/106932488/232541500-479af071-c367-46f8-825e-dd28737307af.jpg)
+
