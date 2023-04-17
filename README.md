@@ -53,6 +53,11 @@ La mesure de la position des doigts se fait par la lecture des diviseurs de tens
 - La borne Vout de chaque diviseur de tension est branchée directement en input au ESP32D aux points GPIO 36, 39 et 34 pour le pouce, l'index et le majeur respectivement.
 - Les points du ESP32D peuvent varier en fonction de votre programme.
 
+### Photos de montage complété
+Bien que rudimentaire, le montage illustré ci-contre sert de référence pour l'assemblage. À noter que les tiges des curseurs traversent le plafond du boitier dans une fente de la langueur du parcours du curseur et que les poteniomètres sont boulonnés par le haut.
+
+*insérer photo*
+
 
 ### Performance
 La latence globale du contrôle, donc entre le mouvement de la main de l'utilisateur et le mouvement de la main est d'environ 200ms et est plutôt constant. La main peut d'ailleurs tenir une banane de 200g sans la faire tomber.
