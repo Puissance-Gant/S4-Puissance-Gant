@@ -1,7 +1,7 @@
 # Code de l'OpenCR
 Cette section indique comment faire fonctionner le code de l'OpenCR et inclut les étapes d'installation d'ArduinoIDE et des librairies nécessaires.
 
-## lectureEtEcritureOpenCR.ino
+## openCR_main.ino
 Ce fichier est le code principal de l'OpenCR. Celui-ci doit être ouvert avec l'ArduinoIDE (nous avons utilisé la version 2.0.0). Suivre le [guide d'installation d'ArduinoIDE pour l'OpenCR.](https://emanual.robotis.com/docs/en/parts/controller/opencr10/#install-on-windows)
 Ce code prépare les moteurs à l'utilisation et démarre la communication. Peu de logique y est présente. Vous pourrez changer les identifiants des moteurs selon les vôtres (voir la section contrôleMoteurs pour plus de détails sur les identifiants)
 
