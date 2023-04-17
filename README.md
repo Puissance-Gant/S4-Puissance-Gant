@@ -19,8 +19,7 @@ Une carte ESP32 récolte les informations des capteurs et les envoie vers le Ras
 
 Le protocole MQTT permet l'utilisation de la main indépendemment de la distance, car il ne faut qu'une connexion internet pour transférer les informations.
 
-***AJOUTER DES INFORMATIONS SUR LA PERFORMANCE DE LA MAIN***
-***EX : MASSE TENUE, TEMPS DE RÉACTION ETC.***
+La main doit pouvoir bouger selon 3 axes de rotations différents ainsi qu'être suffisament robuste afin d'être en mesure de prendre des objets d'une masse d'au moins 100 grammes. Nous souhaitons également une main qui soit en mesure de reproduire les mouvements du gant à plus ou moins 15 degrés de précision et qui ait un temps de réaction de moins de 50ms. 
 
 ## Le projet en action
 
