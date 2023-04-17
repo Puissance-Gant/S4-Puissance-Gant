@@ -23,10 +23,10 @@ void setup() {
     moteurs[MAJEUR] = {37, 0, 100, 21, 235};
     moteurs[POIGNET] = {17, 0, 50, 105, 55};
 
-    //Setup des moteurs
-    // Set Port baudrate to 57600bps. This has to match with DYNAMIXEL baudrate.
+    // Setup des moteurs
+    // Démarrer le dxl avec un baudrate de 57600, le même que les moteurs
     dxl.begin(57600);
-    // Set Port Protocol Version. This has to match with DYNAMIXEL protocol version.
+    // Déterminer la version du protocole du dxl
     dxl.setPortProtocolVersion(DXL_PROTOCOL_VERSION);
 
     for(int i = 0; i < NB_MOTEURS; i++)
@@ -35,13 +35,13 @@ void setup() {
 
 //===============
 void loop() {
-    static String puissance = "";
-    static uint32_t tempsPrec = millis();
-    //static int i = 0;
-    //static const int NB_MSG_RECU_AVANT_ENVOI = 100;
+    //static String puissance = "";
+    //static uint32_t tempsPrec = millis();
 
     recvWithStartEndMarkers();
-    // À chaque fois qu'on reçoit un nouveau message, vérifier pour envoyer la puissance
+    
+    // À chaque fois qu'on reçoit un nouveau message, vérifier pour envoyer la puissance. 
+    // Commenté pour cause de performance de l'OpenCR
     //if(millis() - tempsPrec > 1000) 
     //{
     //    tempsPrec = millis();
@@ -51,8 +51,4 @@ void loop() {
     //}
     
     replyToPython("");
-
-    // Envoyer la puissance consommée chaque 1000 ms
-
- 
 }

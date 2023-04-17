@@ -15,13 +15,14 @@ Le code en français représente les modifications apportées.
 void replyToPython(String msg);
 
 const byte numChars = 128;
-//Complete list of recieved characters
+// Liste des caractères reçus
 char receivedChars[numChars];
 String nouvelleDonnee;
 
 boolean newData = false;
 int tempsDepart = millis();
 
+// Lire un message et l'analyser
 void recvWithStartEndMarkers() {
 
     static boolean recvInProgress = false;
@@ -73,7 +74,7 @@ void recvWithStartEndMarkers() {
                         nouvelleDonnee = "";
                         break;
                     }
-                    case 'U': //Poignet en inclinaison
+                    case 'U': //Arrêt d'urgence actifé ou désactivé
                     {
                         if(nouvelleDonnee == "1")
                             arretUrgence(true);
@@ -90,7 +91,7 @@ void recvWithStartEndMarkers() {
                 }
             }
             else {
-                receivedChars[ndx] = '\0'; // terminate the string
+                receivedChars[ndx] = '\0'; // Terminer le string
                 recvInProgress = false;
                 ndx = 0;
                 newData = true;
@@ -106,22 +107,13 @@ void recvWithStartEndMarkers() {
     
 }
 
-/*Envoyer un message périodique à python
-
-Contient les informations du robot pour l'affichage*/
+// Envoyer un message à python. Utilisé surtout pour des tests et pour envoyer la puissance lue
 void replyToPython(String msg) {
-    //if (newData == true) {
-        //Changer les serial print afin de mettre le message voulu
-        //Serial.print("<This just in ... ");
-        if(msg != "")
-        {
-            Serial.print("<" + msg + ">");            
-        }
+    // S'assurer que le message n'est pas vide
+    if(msg != "")
+        Serial.print("<" + msg + ">");            
 
-        //Serial.print("   ");
-        //Serial.print(millis());
-        //Serial.print('>');
-        if(newData)
-            newData = false;
-    //}
+    // Si on a une nouvelle donnée lue, donc qu'on vient de l'envoyer, on enlève ce flag.
+    if(newData)
+        newData = false;
 }
