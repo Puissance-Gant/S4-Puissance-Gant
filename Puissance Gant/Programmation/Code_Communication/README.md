@@ -9,10 +9,14 @@ http://mqtt-explorer.com/
 
 ## Installation du serveur sur le raspberry pi
 
-Afin d'installer le serveur sur le raspberry pi, il faut d'abbord intaller un système d'operation. Le système d'operation recommandé est ubuntu server 22.10. 
+Afin d'installer le serveur sur le raspberry pi, il faut tout d'abord intaller un système d'operation. Le système d'operation recommandé est ubuntu server 22.10. 
 
 https://ubuntu.com/download/server
 
-Par la suite 
+Par la suite, il faut installer un serveur MQTT sur le raspberry pi. Pour l'installation, il est recommendé de suivre le tutoriel suivant: 
 
-## Fonction utile 
+https://diyi0t.com/microcontroller-to-raspberry-pi-wifi-mqtt-communication/
+
+Il d'ailleurs utile d'installer *MQTT Explorer*, qui est une application qui permet de visualiser et de gérer les messages en temps réel. Celà facilite le débogage et le développement d'applications MQTT.
+
+http://mqtt-explorer.com/
