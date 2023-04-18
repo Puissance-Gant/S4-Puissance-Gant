@@ -6,6 +6,8 @@ Pour utiliser l'interface actuelle, aller à la section **Utiliser l'interface a
 ## Installer PyQt5
 La programmation de l'interface est plus aisée à faire sur un ordinateur avec Windows. Python 3.10 est la version choisie, elle est disponible sur le *Microsoft Store*. Il sera aussi nécessaire d'installer la librairie PyQt5. Sur Windows, ouvrir un terminal (cmd dans la barre de recherche Windows) et taper `pip install pyqt5`, puis `pip install pyqt5-tools`. 
 
+La librairie pyqtgraph a été utilisée pour le graphique de puissance consommée dans le temps. Veuillez suivre [ce lien](https://www.pythonguis.com/tutorials/pyside6-embed-pyqtgraph-custom-widgets/) pour apprendre comment installer et utiliser cette librairie avec PyQt5
+
 ## Installer Qt Designer
 Suivre [ce lien](https://build-system.fman.io/qt-designer-download) pour installer Qt Designer. Ce programme permet de créer l'interface de manière visuelle et d'implémenter un peu de logique directement. La plus grande partie de la programmation de la logique devra être faite par après, cependant.
 
