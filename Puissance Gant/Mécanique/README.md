@@ -3,7 +3,7 @@
 
 1. La main est une pièce unique fait a l'aide de solidworks, comme toutes les autres.
 
-![341310471_200203736123594_965199451253749916_n] < img src="https://user-images.githubusercontent.com/16319829/81180309-2b51f000-8fee-11ea-8a78-ddfe8c3412a7.png width=50% height=50% >
+< img src="https://user-images.githubusercontent.com/16319829/81180309-2b51f000-8fee-11ea-8a78-ddfe8c3412a7.png width=50% height=50% >
 
 2. Afin de joindre les 14 pièces différentes, bien identifié dans le dossier, qui servent de doigts, il faut prendre un élastique coupé et le mettre de manière à ce que chaque bout de l'élastique passe dans un des deux trous arrières de la pièce. Une fois les trois pièces de doigts assemblées (deux pour le pouce) il faut passer l'élastique dans les deux trous arrière du haut de la main prévu pour chaque doigt. (1 à 2 élastiques par doigts) 
 
