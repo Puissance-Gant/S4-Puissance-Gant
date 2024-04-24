@@ -16,10 +16,8 @@ Voici le répertoire du projet de session de l'équipe Puissance Gant :gloves::r
 L'équipe Puissance Gant avait pour but de concevoir une main robotisée ainsi qu'un système de contrôle à distance intuitif. Le produit final consiste en une main à trois doigts indépendemment contrôlés par un gant auquel des potentiomètres coulissants ont été attaché. Une interface utilisateur permet d'observer l'état du robot et de le contrôler manuellement.
 
 ### Le projet en action
-
-
-<video src='https://youtu.be/RtNsFn4x6qA' width=180/>
-
+cliquez sur l'image:<br><br>
+[<img src="https://github.com/Puissance-Gant/S4-Puissance-Gant/assets/94383276/ad8bafd0-f8c5-4c6a-b4ea-afcebb82bb8a" width="50%">](https://youtu.be/RtNsFn4x6qA)
 
 
 ## Fonctionnement global
