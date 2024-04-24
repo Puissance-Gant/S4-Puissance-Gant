@@ -19,10 +19,8 @@ L'équipe Puissance Gant avait pour but de concevoir une main robotisée ainsi q
 
 
 <div class="col-md-4 mb-3">
-                    <div class="col-12">
-                        <h2>Preview Video</h2>
-                    </div>
-                    <img src="https://youtu.be/RtNsFn4x6qA"  class="img-fluid" onclick="openModal(this.src)">
+                    
+<img src="https://youtu.be/RtNsFn4x6qA">
 </div>
 
 
